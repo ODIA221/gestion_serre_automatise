@@ -1,5 +1,5 @@
 import  "./infos.json";
-import 
+import
 
 function Historique(){
 
