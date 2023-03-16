@@ -3,7 +3,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: "CustomFont";
-    /* background-image: url("../images/bg.jpg")  */
 }
 
 .body
@@ -12,9 +11,27 @@
     height: 100%;
     background-image: url("../images/bg.jpg");
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+    
+}
+.label
+{
+    color: white;
+    font-size: 20px;
+    
+}
+
+.login, h1.label
+{
+    font-size: 25px;
+    font-weight: bold;
 }
 
 
@@ -29,7 +46,7 @@
 }
 
 
-.corp {
+.corp1, .corp {
     width: 100%;
     height: 50%;
     position: relative;
@@ -40,17 +57,19 @@
     align-items: center;
     justify-content: space-around;
     background-color: #004446;
+    margin:5px;
+   
     
 }
 
-.alt-login {
+/* .alt-login {
     width: 80%;
     height: 3em;
     display: flex;
     justify-content: space-around;
-}
+} */
 
-.alt-login div {
+/* .alt-login div {
     width: 47.5%;
     height: 90%;
     border-radius: 0.25em;
@@ -59,16 +78,16 @@
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
-}
+} */
 
 input {
     border: none;
-    background-color: rgb(229, 226, 226);
+    background-color: white;
     width: 80%;
     border-radius: 0.25em;
     text-align: center;
-    padding: 2em;
-    font-size: 0.75em;
+    padding: 5px;
+    font-size: 20px;
 }
 
 input:focus {
@@ -76,53 +95,26 @@ input:focus {
 }
 
 .login-btn {
-    width: 40%;
+    width: 60%;
     height: 3em;
-    background-color: rgb(32, 177, 255);
+    background-color: #6DB98D;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: 0.5s;
-    border-radius: 0.25em;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .login-btn:hover { transform: scale(1.25);}
 
-.text {
+/* .text {
     position: relative;
     bottom: 0.5%;
-}
+} */
 
-.hide {
-    position: absolute;
-    transform: scale(0);
-}
 
-.login-popup {
-    position: absolute;
-    height: 30em;
-    width: 30em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25em;
-    background-color: black;
-    color: white;
-    bottom: 0;
-    transform: scale(1);
-    transition: 1.5s;
-}
 
-.blue {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-   
-}
 
 /* -------------------- TABLET OPTIMIZATION -------------------- */
 @media only screen and (min-device-width: 37em) {
@@ -130,7 +122,7 @@ input:focus {
         font-size: 1em;
     }
 
-    .corp {
+    .corp1,.corp {
         width: 50%;
         height: 50%;
     }
@@ -142,9 +134,10 @@ input:focus {
         font-size: 1.25em;
     }
 
-    .corp {
+    .corp1,.corp {
         width: 25%;
         height: 65%;
+
     }
 }
 

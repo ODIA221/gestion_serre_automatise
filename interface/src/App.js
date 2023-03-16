@@ -1,4 +1,4 @@
-import Connexion from './pages/Connexion.js';
+
 import './App.css';
 import LoginForm from './pages/Connexion.js';
 
