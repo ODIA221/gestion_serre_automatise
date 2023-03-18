@@ -1,5 +1,4 @@
 
-import './App.css';
 import LoginForm from './pages/Connexion.js';
 
 function App() {

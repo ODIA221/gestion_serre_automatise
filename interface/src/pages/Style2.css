@@ -25,10 +25,10 @@
 {
     color: white;
     font-size: 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
     
-}
-div label.label{
-    float: left;
 }
 
 .login, h1.label
@@ -65,10 +65,11 @@ div label.label{
 
 .corp1
 {
+    margin: 10px;
     background-image: url(../images/rfid1.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 10px;
+
 }
 
 input {
@@ -87,7 +88,7 @@ input:focus {
 
 .login-btn {
     width: 60%;
-    height: 3em;
+    height: 2em;
     background-color: #6DB98D;
     display: flex;
     justify-content: center;
@@ -95,6 +96,10 @@ input:focus {
     transition: 0.5s;
     border-radius: 5px;
     cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
 .login-btn:hover { transform: scale(1.25);}
