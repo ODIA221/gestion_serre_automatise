@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+/* import rfid from './images/rfid.jpeg'; */
 import "./Style2.css";
 
 const LoginForm = () => {
@@ -8,8 +9,8 @@ const LoginForm = () => {
         <div className="body">
             {/* div rfid  connexion*/}
             <div  className="corp1">
-                <h1 className="label" >Connexion avec Carte RFID</h1>
-                <img src="../images/rfid.jpeg" alt="carte"></img>
+                {/* <h1 className="label" >Connexion avec Carte RFID</h1> */}
+               
             </div>
             {/* div form connexion*/}
                 <div className="corp">

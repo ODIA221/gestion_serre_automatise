@@ -27,6 +27,9 @@
     font-size: 20px;
     
 }
+div label.label{
+    float: left;
+}
 
 .login, h1.label
 {
@@ -35,7 +38,7 @@
 }
 
 
-/* --------------------------- MOBILE VERSION ------------------------------ */
+
 .pages {
     height: 100vh;
     width: 100%;
@@ -57,28 +60,16 @@
     align-items: center;
     justify-content: space-around;
     background-color: #004446;
-    margin:5bpx;
-   
-    
+    margin:15bpx;
 }
 
-/* .alt-login {
-    width: 80%;
-    height: 3em;
-    display: flex;
-    justify-content: space-around;
-} */
-
-/* .alt-login div {
-    width: 47.5%;
-    height: 90%;
-    border-radius: 0.25em;
-    background-color: black;
-    background-position: center;
-    background-size: contain;
+.corp1
+{
+    background-image: url(../images/rfid1.jpeg);
     background-repeat: no-repeat;
-    cursor: pointer;
-} */
+    background-size: cover;
+    margin: 10px;
+}
 
 input {
     border: none;
@@ -107,12 +98,6 @@ input:focus {
 }
 
 .login-btn:hover { transform: scale(1.25);}
-
-/* .text {
-    position: relative;
-    bottom: 0.5%;
-} */
-
 
 
 
