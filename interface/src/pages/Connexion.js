@@ -17,12 +17,12 @@ const LoginForm = () => {
     return (
         <div className="body">
             {/* div rfid  connexion*/}
-            <div  className="corp1">
+            <div  className="corp">
                 {/* <h1 className="label" >Connexion avec Carte RFID</h1> */}
 
             </div>
             {/* div form connexion*/}
-                <form className="corp" onSubmit={handleSubmit(onSubmit)}>
+                <form className="corp1" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion Formulaire</h1>
 
                     <div>
@@ -40,7 +40,7 @@ const LoginForm = () => {
                                 pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
                             })}
                          /> 
-                        <br/>
+                        <br/><br/>
                          {/* Message d'erreurs */}
                         <small>
                             <error>
@@ -66,7 +66,7 @@ const LoginForm = () => {
                                 minLength: 5,
                                 maxLength: 8,
                             })}
-                        /><br/>
+                        /><br/><br/>
                         {/* Message d'erreurs */}
                         <small>
                             <error>
