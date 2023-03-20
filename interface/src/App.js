@@ -9,12 +9,11 @@ function App() {
   <>
   <div className='pages'>    
     <Routes >
-            <Route path="/" element={<LoginForm/>} />
-            <Route path='/Dashboard' element={<Dashboard/>}>
+          <Route path="/" element={<LoginForm/>} />
+            <Route path='/Dashboard' element={<Dashboard/>}/>
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='Paramettre_plante' element='Paramettre_plante'/>
             <Route path='ChangePW' element='ChangePW'/>
-        </Route>
         <Route  path='/*'> Page introuvable</Route>
     </Routes>
   </div>
