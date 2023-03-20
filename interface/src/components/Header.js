@@ -1,4 +1,4 @@
-import './Header.css'
+import './Style1.css'
 import logoOumaAgri from '../images/logo.png'
 import serre from '../images/Serre.jpeg'
 
@@ -18,9 +18,9 @@ function Header() {
         <button id="btnMenuNav"> <Link to="/Dashboard/Paramettre_plante">Paramètres Plantes</Link></button>
         
         <select  onChange={(e)=> navigate(e.target.value)} id="btnMenuNav" > 
-        <option value="">Historique</option>
-        <option value='/Dashboard/Historique_plante' >Historique des plantes</option>
-        <option value='/Dashboard/Historique_serre'>Historique de la serre</option>
+        <option >Historique</option>
+        <option >Historique des plantes</option>
+        <option value='/Dashboard/Historique'>Historique de la serre</option>
         </select>
         <span className="material-symbols-outlined" id="btnMenuNav">logout</span>
     </div>
