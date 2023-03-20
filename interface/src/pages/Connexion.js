@@ -1,32 +1,81 @@
 import React, {useEffect, useState} from "react";
+import { useForm } from "react-hook-form";
 import "./Style2.css";
 
 const LoginForm = () => {
+
+    /*  */
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+      } = useForm();
+      /*  */
+      const onSubmit = (data) => console.log(data);
 
    
     return (
         <div className="body">
             {/* div rfid  connexion*/}
             <div  className="corp1">
-                <h1 className="label" >Connexion avec Carte RFID</h1>
-                <img src="../images/rfid.jpeg" alt="carte"></img>
+                {/* <h1 className="label" >Connexion avec Carte RFID</h1> */}
+
             </div>
             {/* div form connexion*/}
-                <div className="corp">
+                <form className="corp" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion Formulaire</h1>
-                    <label className="label">Email</label>
-                    <input type="text" 
-                        placeholder="Email" 
-                    /> 
-                    <label className="label">Mot de pass</label>
-                    <input 
-                        type="password" 
-                        placeholder="Mot de passe" 
-                    />
+                    <div className="label">
+                        <label>
+                             Email
+                        </label>
+                    </div>
+                    <div>
+                        <input 
+                            type="text" 
+                            placeholder="Email" 
+                            {...register("email", {
+                                required: true,
+                                pattern: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
+                            })}
+                         /> 
+                        <br/>
+                         {/* Message d'erreurs */}
+                        <small>
+                            <error>
+                                {errors.email?.type === "required" && "Email obligatoir"}
+                                {errors.email?.type === "pattern" && "Format mail incorrect !"}
+                            </error>
 
-                    <button className="login-btn" /* onClick={} */>Connexion</button>
+                        </small>
+                    </div>
+                    <div className="label">
+                        <label>
+                            Mot de passe
+                        </label>
+                    </div>
+                    <div>
+                        <input 
+                            type="password" 
+                            placeholder="Mot de passe" 
+                            {...register("mdp", {
+                                required: true,
+                                minLength: 5,
+                                maxLength: 8,
+                            })}
+                        />
+                    </div>
+                    {/* Message d'erreurs */}
+                    <small>
+                        <error>
+                            {errors.mdp?.type === "required" && "Mot de passe obligatoir"}
+                            {errors.mdp?.type === "minLength" && "5 caractères au minimum"}
+                            {errors.mdp?.type === "maxLength" && "8 caractères au maximun"}
+                        </error>
+                     </small>
+
+                    <button type="submit" className="login-btn" /* onClick={} */>Connexion</button>
                 
-                </div>
+                </form>
 
         </div>      
 
