@@ -24,12 +24,13 @@ const LoginForm = () => {
             {/* div form connexion*/}
                 <form className="corp" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion Formulaire</h1>
-                    <div className="label">
-                        <label>
-                             Email
-                        </label>
-                    </div>
+
                     <div>
+                        <div className="label">
+                            <label>
+                                Email
+                            </label>
+                        </div>
                         <input 
                             className="input"
                             type="text" 
@@ -49,12 +50,13 @@ const LoginForm = () => {
 
                         </small>
                     </div>
-                    <div className="label">
-                        <label>
-                            Mot de passe
-                        </label>
-                    </div>
+
                     <div>
+                        <div className="label">
+                            <label>
+                                Mot de passe
+                            </label>
+                        </div>
                         <input 
                             className="input"
                             type="password" 
@@ -64,16 +66,16 @@ const LoginForm = () => {
                                 minLength: 5,
                                 maxLength: 8,
                             })}
-                        />
+                        /><br/>
+                        {/* Message d'erreurs */}
+                        <small>
+                            <error>
+                                {errors.mdp?.type === "required" && "Mot de passe obligatoir !"}
+                                {errors.mdp?.type === "minLength" && "5 caractères au minimum !"}
+                                {errors.mdp?.type === "maxLength" && "8 caractères au maximun !"}
+                            </error>
+                        </small>
                     </div>
-                    {/* Message d'erreurs */}
-                    <small>
-                        <error>
-                            {errors.mdp?.type === "required" && "Mot de passe obligatoir !"}
-                            {errors.mdp?.type === "minLength" && "5 caractères au minimum !"}
-                            {errors.mdp?.type === "maxLength" && "8 caractères au maximun !"}
-                        </error>
-                     </small>
 
                     <button type="submit" className="login-btn" /* onClick={} */>Connexion</button>
                 

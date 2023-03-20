@@ -22,10 +22,7 @@
  div.label
 {
     color: white;
-    font-size: 20px;
-
-
-    
+    font-size: 20px;   
 }
 
 h1.label
@@ -33,6 +30,7 @@ h1.label
     font-size: 25px;
     font-weight: bold;
     color: white;
+    
 }
 
 
@@ -49,6 +47,7 @@ h1.label
 error {
     font-size: 18px;
     color: #ff6774;
+    
   }
 
 
@@ -63,7 +62,7 @@ error {
     align-items: center;
     justify-content: space-around;
     background-color: #004446;
-    margin:15bpx;
+ /*    margin:15bpx; */
 }
 
 .corp1
