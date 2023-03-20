@@ -18,17 +18,13 @@
     background-repeat: no-repeat;
     background-size: cover;
     
-    
-    
 }
-div.label
+ div.label
 {
     color: white;
     font-size: 20px;
-    float: left;
-/*     display: flex;
-    justify-content: left;
-    align-items: center; */
+
+
     
 }
 
@@ -79,22 +75,23 @@ error {
 
 }
 
-input {
+.input {
     border: none;
     background-color: white;
-    width: 80%;
+    width: 100%;
     border-radius: 0.25em;
     text-align: center;
     padding: 5px;
     font-size: 20px;
+
 }
 
-input:focus {
+.input:focus {
     outline-color: rgb(32, 177, 255);
 }
 
 .login-btn {
-    width: 60%;
+    width: 50%;
     height: 2em;
     background-color: #6DB98D;
     display: flex;

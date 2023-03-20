@@ -31,6 +31,7 @@ const LoginForm = () => {
                     </div>
                     <div>
                         <input 
+                            className="input"
                             type="text" 
                             placeholder="Email" 
                             {...register("email", {
@@ -42,7 +43,7 @@ const LoginForm = () => {
                          {/* Message d'erreurs */}
                         <small>
                             <error>
-                                {errors.email?.type === "required" && "Email obligatoir"}
+                                {errors.email?.type === "required" && "Email obligatoir !"}
                                 {errors.email?.type === "pattern" && "Format mail incorrect !"}
                             </error>
 
@@ -55,6 +56,7 @@ const LoginForm = () => {
                     </div>
                     <div>
                         <input 
+                            className="input"
                             type="password" 
                             placeholder="Mot de passe" 
                             {...register("mdp", {
@@ -67,9 +69,9 @@ const LoginForm = () => {
                     {/* Message d'erreurs */}
                     <small>
                         <error>
-                            {errors.mdp?.type === "required" && "Mot de passe obligatoir"}
-                            {errors.mdp?.type === "minLength" && "5 caractères au minimum"}
-                            {errors.mdp?.type === "maxLength" && "8 caractères au maximun"}
+                            {errors.mdp?.type === "required" && "Mot de passe obligatoir !"}
+                            {errors.mdp?.type === "minLength" && "5 caractères au minimum !"}
+                            {errors.mdp?.type === "maxLength" && "8 caractères au maximun !"}
                         </error>
                      </small>
 
