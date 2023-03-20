@@ -1,0 +1,4 @@
+"lundi": {
+    "temperature": "21",
+    "start": "nodemon index.js"
+  },

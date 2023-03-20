@@ -166,3 +166,12 @@ error {
     margin:5px;
     
 }
+table{
+    border-radius: 10px;
+    width: auto;
+}
+thead{
+    color: white;
+    background-color: #2d7974;
+    opacity: 0.6;
+}
