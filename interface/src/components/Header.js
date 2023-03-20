@@ -4,21 +4,23 @@ import serre from '../images/Serre.jpeg'
 
 import image1 from '../images/imageBG1.png'
 import salade from '../images/salade.png'
-
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
+  const navigate = useNavigate()
   return (
  <div id='entête'>
      
     {/* //Menu de navigation */}
     <div id='menuNav' >
-        <button id="btnMenuNav"> Tableau de bord </button>
-        <button id="btnMenuNav"> Changer de Mot de passe</button>
-        <button id="btnMenuNav"> Paramètres Plantes</button>
-        <select  id="btnMenuNav"> 
-        <option id="btnMenuNav">Historique</option>
-        <option id="btnMenuNav">Historique des plantes</option>
-        <option id="btnMenuNav">Historique de la serre</option>
+        <button id="btnMenuNav"><Link to="/Dashboard">Tableau de bord </Link> </button>
+        <button id="btnMenuNav"> <Link to="/Dashboard/ChangePW">Changer de Mot de passe</Link></button>
+        <button id="btnMenuNav"> <Link to="/Dashboard/Paramettre_plante">Paramètres Plantes</Link></button>
+        
+        <select  onChange={(e)=> navigate(e.target.value)} id="btnMenuNav" > 
+        <option value="">Historique</option>
+        <option value='/Dashboard/Historique_plante' >Historique des plantes</option>
+        <option value='/Dashboard/Historique_serre'>Historique de la serre</option>
         </select>
         <span className="material-symbols-outlined" id="btnMenuNav">logout</span>
     </div>
