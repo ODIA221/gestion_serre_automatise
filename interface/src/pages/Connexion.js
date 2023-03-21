@@ -18,7 +18,7 @@ const LoginForm = () => {
         <div className="body">
             {/* div rfid  connexion*/}
             <div  className="corp">
-                {/* <h1 className="label" >Connexion avec Carte RFID</h1> */}
+                
 
             </div>
             {/* div form connexion*/}
@@ -46,6 +46,7 @@ const LoginForm = () => {
                             <error>
                                 {errors.email?.type === "required" && "Email obligatoir !"}
                                 {errors.email?.type === "pattern" && "Format mail incorrect !"}
+                               {/*  {errors.email?.type === "a@gmail.com" && "Mail n'existe pas  !"} */}
                             </error>
 
                         </small>
@@ -77,7 +78,7 @@ const LoginForm = () => {
                         </small>
                     </div>
 
-                    <button type="submit" className="login-btn" /* onClick={} */>Connexion</button>
+                    <button type="submit" className="login-btn">Connexion</button>
                 
                 </form>
 
