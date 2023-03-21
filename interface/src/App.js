@@ -1,9 +1,9 @@
 import './App.css';
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
-import { createBrowserRouter, createRoutesFromElements, Link, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Historiques from './pages/Historiques';
-
+import  TableauDB  from './pages/TableauDB';
 function App() {
   return (
   <div className='pages'>
@@ -13,6 +13,7 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='Paramettre_plante' element='Paramettre_plante'/>
+            <Route path='TableauDB' element='TableauDB'/>
             <Route path='ChangePW' element='ChangePW'/>
         </Route>
         <Route  path='/*'> Page introuvable</Route>
