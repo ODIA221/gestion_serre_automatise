@@ -92,3 +92,40 @@ a:hover{
     opacity: 91%;
   }
  
+ #modalparam{
+  border: solid #2d7974; 
+  
+ }
+
+
+.butA{
+  background-color: red;
+  color: white;
+  margin-right: 250px;
+  padding: 8px;
+  border-radius: 7px;
+}
+
+.butM{
+  background-color:green;
+  color: white;
+  border-radius: 8px;
+
+}
+#swal-input1{
+  padding: 15px;
+}
+#param{
+  font-size: 25px;
+}
+.modal-header{
+  text-align: center;
+  font-size: 25px;
+}
+.md{
+  border: #2d7974;
+  background-color: #2d7974;
+  color: white;
+  border-radius: 7px;
+
+}

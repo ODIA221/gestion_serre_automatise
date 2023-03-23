@@ -1,12 +1,13 @@
 table{
     border-radius: 10px;
     width: auto;
+    font-size: 25px;
 }
 thead{
     color: white;
-    background-color: #2d7974;
-    opacity: 0.6;
+    background-color: #3d6e6f;
 }
+
 #container{
     margin: 5%;
 }
@@ -178,3 +179,5 @@ error {
     margin:5px;
     
 }
+
+
