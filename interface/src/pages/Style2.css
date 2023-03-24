@@ -1,11 +1,11 @@
 table{
     border-radius: 10px;
     width: auto;
+    font-size: 25px;
 }
 thead{
     color: white;
-    background-color: #2d7974;
-    opacity: 0.6;
+    background-color: #3d6e6f;
 }
  /* Dashboard */
 #container2{
@@ -233,3 +233,5 @@ error {
     margin:5px;
     
 }
+
+

@@ -66,7 +66,7 @@ function Historiques(){
 
      {
      data.map(h => <tr>
-      <td>{h.jour}</td>
+      <td><b>{h.jour}</b></td>
       <td>{h.temperature}</td>
       <td>{h.humsol}</td>
       <td>{h.humserre}</td>
