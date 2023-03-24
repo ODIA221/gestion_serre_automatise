@@ -10,7 +10,7 @@ a:hover{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    
   
   }
   /* menu navigation */
@@ -40,13 +40,12 @@ a:hover{
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 7.5%;
     text-transform: uppercase;
+    margin-top: 0.2%;
    }
     #textHeader{
-      margin-top: 1%;
-      font-size: 25px;
-     
+      font-size: 18.3px;
+     margin: 1.5%;
   
     }
     #imageHeader{
@@ -55,7 +54,7 @@ a:hover{
     }
    /* image header et valeurs temps réelles */
    #VTR{
-    margin-top: -6%;
+    margin-top: -7%;
     width: 100%;
 
    }
@@ -68,7 +67,7 @@ a:hover{
   #ImageSaladeVTR{
     width: 65%;
     height: 190px;
-      margin-top: 2%;
+      margin-top: 1%;
       margin-left: 16%;
       position: relative;
       border-radius: 10px;

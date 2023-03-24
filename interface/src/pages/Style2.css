@@ -7,9 +7,73 @@ thead{
     background-color: #2d7974;
     opacity: 0.6;
 }
-#container{
-    margin: 5%;
+ /* Dashboard */
+#container2{
+    margin: 2.2%;
+
 }
+
+
+
+
+
+/* Tableau de bord */
+#containerGeneralDash2{
+    width: 90%;
+   display: flex;
+   text-align: center;
+   justify-content: center;
+  gap: 10%;
+ 
+}
+.headerDash2{
+    width: 110%;
+    height: 15%;
+    background-color: #3d6e6f;
+    font-size: 40px;
+    border-radius:  25px 25px 0px 0px;
+}
+.containerDash2{
+    width: 110%;
+    height:410px;
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    padding: 2% 0% 2% 3%;
+    border-radius:  0px 0px 25px 25px;
+    background-color: #f5f8f8;
+}
+
+.btnDash{
+    display: flex;
+    justify-content: center;
+    
+  
+}
+.btnDash button{
+    font-size: 20px;
+    margin: 4%;
+}
+.imageDash2{
+   
+    border-radius: 20px;
+    height: 55%;
+}
+.imageDash22{
+    width:73%;
+    margin-left: 15%;
+}
+.elementDash2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 8%;
+}
+
+
+
+
+
 /* Style page Connextion */
 * {
     margin: 0;
@@ -46,15 +110,6 @@ h1.label
 }
 
 
-
-/* .pages {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.75em;
-} */
 /* erreurs msg saisies */
 error {
     font-size: 18px;

@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <>
     <Header/>
-    <div id='container'>
+    <div id='container2'>
     <Outlet></Outlet>
     </div>
     </>
