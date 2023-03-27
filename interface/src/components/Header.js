@@ -20,6 +20,8 @@ function Header() {
   const autres = (e) => {
     if (e.target.value === "autres") {
       setAutre(true)
+      setDebit(false)
+      setDebitdif(false)
     } else {
       setAutre(false)
     }
@@ -27,6 +29,7 @@ function Header() {
   const debits = (e) => {
     if (e.target.value === "debits") {
       setDebit(true)
+      setAutre(false)
     } else {
       setDebit(false)
     }
@@ -34,6 +37,7 @@ function Header() {
   const debitdifs = (e) => {
     if (e.target.value === "debitdifs") {
       setDebitdif(true)
+      setAutre(false)
     } else {
       setDebitdif(false)
     }
@@ -96,22 +100,23 @@ function Header() {
               <form id='param'>
                 <div class='d-flex flex-column'>
                   <label class="labe1">Nom du plante</label>
-                  <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input">
+                 {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input">
                     <option>Salade</option>
                     <option>Tomate</option>
                     <option value='autres'>Autres</option>
-                  </select>
+                  </select>: <input type="text" placeholder='donnez une plante'/>}
+                  
 
                   {!autre && <>
                     <label class="labe2">Durée</label>
-                    <select id="swal-input1" class="swal2-input">
+                      <select id="swal-input1" class="swal2-input">
                       <option>5mns</option>
                       <option>10mns</option>
                       <option>20mns</option>
                     </select>
                   </>}
 
-                  {!autre && <>
+                  {!debit && !debitdif && !autre && <>
                     <label class="labe3">Heure d'arrosage</label>
                     <select id="swal-input1" class="swal2-input">
                       <option>08h-17h</option>
@@ -131,12 +136,7 @@ function Header() {
                   }
                   {
                     debit && <>
-                      <label class="labe2">Durée</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>5mns</option>
-                        <option>10mns</option>
-                        <option>20mns</option>
-                      </select>
+                     
                       <label class="labe2">Premiere Heure</label>
                       <select id="swal-input1" class="swal2-input">
                         <option>8h</option>
@@ -153,12 +153,7 @@ function Header() {
                   }
                   {
                     debitdif && <>
-                      <label class="labe2">Durée</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>5mns</option>
-                        <option>10mns</option>
-                        <option>20mns</option>
-                      </select>
+                
                       <label class="labe2">Premiere Heure</label>
                       <select id="swal-input1" class="swal2-input">
                         <option>8h</option>
