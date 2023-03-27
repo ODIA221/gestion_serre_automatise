@@ -5,6 +5,7 @@ import image1 from '../images/imageBG1.png'
 import salade from '../images/salade.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from "react-hook-form";
 
 function Header() {
   const navigate = useNavigate()
@@ -39,13 +40,58 @@ function Header() {
     }
   }
 
+
+
+
+  
+
+  /*--------Déclarations fonction pour Popup modicfication Mot de passe --------*/
+
+      /* controle de saisie avec hook form */
+      const {
+        register,
+        formState: { errors },
+        handleSubmit,
+      } = useForm();
+
+    /* déclaration onSubmit */
+    const onSubmit  = (data) => console.log(data);
+
+    /* hooks popup */
+    const [popupMdp,setPop]=useState(false, {
+        mdp1:"",
+        mdp2:"",
+        mdp3:""
+    })
+    /*  */
+    const [error, setError] = useState({
+        mdp1:"",
+        mdp2:"",
+        mdp3:""
+      })
+    /* fonction afficher popup */
+    const handleClickOpen=()=>{
+        setPop(true)
+        
+    }
+    /* Fonction annuler */
+    const closePopup=()=>{
+        setPop(false);
+        window.location.reload();
+    }
+ /*--------Fin Déclarations fonction pour Popup modicfication Mot de passe --------*/
+
+
+
+
   return (
     <div id='entête'>
 
       {/* //Menu de navigation */}
       <div id='menuNav' >
         <button id="btnMenuNav"><Link to="/Dashboard/TableauDB">Tableau de bord </Link> </button>
-        <button id="btnMenuNav"> <Link to="/Dashboard/ChangePW">Changer de Mot de passe</Link></button>
+        {/* <button id="btnMenuNav"> <Link to="/Dashboard/ChangePW">Changer de Mot de passe</Link></button> */}
+        <button id="btnMenuNav" onClick={handleClickOpen}>Changer de Mot de passe</button> 
         <button id="btnMenuNav"> <Link onClick={() => popup()}>Paramètres Plantes</Link></button>
 
         <select onChange={(e) => navigate(e.target.value)} id="btnMenuNav" >
@@ -193,7 +239,136 @@ function Header() {
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+       {/*----------------Corp Popup Modification mot de passe -------------------------*/}
+
+
+       <div id='main'>
+            {
+            popupMdp?
+            <div className="popup">
+                    <div /* className="mdpForm" */>
+                        <div className="popup-header">      
+                        </div> 
+                        <form  onSubmit={handleSubmit(onSubmit)}>
+                                <div>
+                                    <label className="mdpLabel">Actuel Mot de Passe</label>
+                                </div>
+                                <div>
+                                    <input 
+                                        className="mdpInput"
+                                        placeholder="..."
+                                        name="mdp1"
+                                        value={popupMdp.mdp1}
+                                        type="password"
+                                        /* onChange={onInputChange}
+                                        onBlur={validateInput} */
+                                        {...register("actuelMdp", {
+                                            required: true,
+                                            minLength: 5,
+                                            maxLength: 8,
+                                            
+                                            
+                                        })}
+                                    />
+                                </div>
+                                {/* Message d'erreurs */}
+                                <small>
+                                    <error>
+                                        {errors.actuelMdp?.type === "required" && "Champs obligatoir !"}
+                                        {errors.actuelMdp?.type === "minLength" && "5 caractères au minimum !"}
+                                        {errors.actuelMdp?.type === "maxLength" && "8 caractères au maximun !"}
+                            
+                                    </error>
+
+                                </small>   
+                                <div>
+                                    <div>
+                                        <label className="mdpLabel">nouveau Mot de Passe</label>
+                                    </div>
+                                    <input 
+                                        className="mdpInput"
+                                        type="password"
+                                        name="mdp2"
+                                        value={popupMdp.mdp2}
+                                        placeholder="..."
+                                       /*  onChange={onInputChange}
+                                        onBlur={validateInput} */
+                                        {...register("nouveauMdp", {
+                                            required: true,
+                                            minLength: 5,
+                                            maxLength: 8,
+                                            
+                                        })}
+                                    />
+                                </div>                                     
+                                
+                                {/* Message d'erreurs */}
+                                <small>
+                                    <error>
+                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoir !"}
+                                        {errors.nouveauMdp?.type === "minLength" && "5 caractères au minimum !"}
+                                        {errors.nouveauMdp?.type === "maxLength" && "8 caractères au maximun !"}
+                                        
+                                    </error>
+
+                                </small>
+                                <div>
+                                    <label className="mdpLabel">Confirmation Mot de Passe</label>
+                                </div>
+                                <div>
+                                    <input 
+                                        className="mdpInput"
+                                        placeholder="..."
+                                        name="mdp3"
+                                        value={popupMdp.mdp3}
+                                       /*  onChange={onInputChange}
+                                        onBlur={validateInput} */
+                                        type="password"
+                                        {...register("confirmMdp", {
+                                            required: true,
+                                            minLength: 5,
+                                            maxLength: 8,
+                                        })}
+                                    />
+                                </div>
+                                {/* Message d'erreurs */}
+                                <small>
+                                    <error>
+                                        {errors.confirmMdp?.type === "required" && "Champs obligatoir !"}
+                                        {errors.confirmMdp?.type === ("popup.confirmMdp !== popnouveauMdp") && "0000"}
+                                        {errors.confirmPassword && <span className='err'>{errors.confirmMdp}</span>}
+                                    </error>
+
+                                </small>
+                            <div className="mdpBtn">
+                                <button onClick={closePopup} className=" btnAnnuler">Annuler</button>
+                                <button type="submit" className="btnModifier">  Modifier</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+            </div>:""
+            }
+        </div>
+        {/*--------------------------- Fin Corp Pop UP modififaction Mot de passe------------------- */}
+
     </div>
+
+
+
 
 
 
