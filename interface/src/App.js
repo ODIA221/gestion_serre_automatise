@@ -1,4 +1,4 @@
-import './App.css';
+
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
