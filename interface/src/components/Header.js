@@ -50,7 +50,7 @@ function Header() {
 
         <select onChange={(e) => navigate(e.target.value)} id="btnMenuNav" >
           <option >Historique</option>
-          <option >Historique des plantes</option>
+          <option value='/Dashboard/ParametrePlante' >Historique des plantes</option>
           <option value='/Dashboard/Historique'>Historique de la serre</option>
         </select>
         <span className="material-symbols-outlined" id="btnMenuNav">logout</span>
