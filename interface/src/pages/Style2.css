@@ -10,7 +10,8 @@ thead{
  /* Dashboard */
 #container2{
     margin: 2.2%;
-
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -235,3 +236,26 @@ error {
 }
 
 
+/* Paramètre plante */
+.historiquePlante2{
+  
+    margin: 2%;
+    display: flex;
+   flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    gap: 40px;
+    font-size: 70px;
+}
+.divHistoriquePlante2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 7%;
+}
+.btnHistoriquePlante2{
+    border-radius: 10px;
+    background-color: #377a7c;
+    color: white;
+    width: 30%;
+}
