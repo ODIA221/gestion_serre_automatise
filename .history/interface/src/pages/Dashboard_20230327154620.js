@@ -8,8 +8,8 @@ const Dashboard = () => {
     <>
     <Header/>
     <div id='container2'>
-    <Outlet></Outlet>
-   
+    
+    <TableauDB/>
     </div>
     </>
   )

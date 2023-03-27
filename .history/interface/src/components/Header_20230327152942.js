@@ -106,6 +106,9 @@ function Header() {
                     <option value='autres'>Autres</option>
                   </select>: <input type="text" placeholder='donnez une plante'/>}
                   
+
+                 
+
                   {!debit && !debitdif && !autre && <>
                     <label class="labe3">Heure d'arrosage</label>
                     <select id="swal-input1" class="swal2-input">
@@ -114,7 +117,7 @@ function Header() {
                       <option>11h-19h</option>
                     </select>
                   </>}
-
+                  
                   {!autre && <>
                     <label class="labe2">Durée</label>
                       <select id="swal-input1" class="swal2-input">

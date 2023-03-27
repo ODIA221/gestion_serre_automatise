@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose
-.connect('mongodb+srv://mariecherif:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutomatise')
+.connect('mongodb+srv://maremesow422:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutoma')
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)

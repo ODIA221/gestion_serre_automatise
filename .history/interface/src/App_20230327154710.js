@@ -3,7 +3,7 @@ import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
 import Historiques from './pages/Historiques';
-import  TableauDB  from './pages/TableauDB';
+/* import  TableauDB  from './pages/TableauDB'; */
 import  ParametrePlante  from './pages/ParametrePlante';
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
-            <Route path='TableauDB' element={<TableauDB />}/>
+     {/*        <Route path='TableauDB' element={<TableauDB />}/> */}
             <Route path='ChangePW' element='ChangePW'/>
 
         </Route>

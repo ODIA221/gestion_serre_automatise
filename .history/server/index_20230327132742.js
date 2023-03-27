@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
+var router = express.Router();
+const api = require('./routes/auth.routes')
 
 mongoose
-.connect('mongodb+srv://mariecherif:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutomatise')
+.connect('mongodb+srv://fadalba:Thiaroye44@cluster0.daoknxe.mongodb.net/test')
   
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)

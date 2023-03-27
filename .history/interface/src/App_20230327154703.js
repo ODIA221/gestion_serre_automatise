@@ -14,7 +14,7 @@ function App() {
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
-            <Route path='TableauDB' element={<TableauDB />}/>
+     {/*        <Route path='TableauDB' element={<TableauDB />}/> */}
             <Route path='ChangePW' element='ChangePW'/>
 
         </Route>
