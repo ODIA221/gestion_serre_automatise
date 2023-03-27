@@ -155,13 +155,14 @@ a:hover{
   align-items: center;
   margin: auto;
   justify-content: center;
-  max-height: 75%;
-  min-width: 30%;
+  max-height: 80%;
+  min-width: 31%;
   background-color: white;
   position: absolute;
-  top: 17%;
+  top: 13%;
   right: 35%;
-  border: solid #3d6e6f
+  border: 5px solid #3d6e6f;
+  border-radius: 10px;
 }
 .popup-header{
   display: flex;
