@@ -58,7 +58,7 @@ function Header() {
       {/* //logo, description et photo serre */}
       <div id='infoNav' >
         <div > <img src={logoOumaAgri} id="imageHeader" alt="Logo Ouma Agri" /></div>
-        <div id="textHeader"> Sur cette application vous pourrez manipuler votre serre automatisée <br /> et  visualiser les informations de cette dernière </div>
+        <div id="textHeader"> Sur cette application vous pourrez manipuler votre serre automatisée  et  visualiser les informations de cette dernière </div>
         <div><img src={serre} id="imageHeader" alt="serre" /></div>
       </div>
       {/* Valeur à temp réel */}
