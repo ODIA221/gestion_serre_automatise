@@ -1,4 +1,4 @@
-
+<<<<<<< HEAD
 const mongoose = require('mongoose')
 
 mongoose
@@ -10,4 +10,5 @@ mongoose
   .catch((err) => {
     console.error('Error connecting to mongo', err.reason)
   })
+=======
 /* mongodb+srv://odia221:odia221@cluster0.4sxdb68.mongodb.net/serre_automatisee?retryWrites=true&w=majority */
