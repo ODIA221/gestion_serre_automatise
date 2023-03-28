@@ -14,7 +14,7 @@ function App() {
         <Route index path="/" element={<LoginForm/>} />
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
-            <Route path='ParametrePlante' element={<ParametrePlante />}/>
+            <Route PrivateRoute exact path='ParametrePlante' element={<ParametrePlante />}/>
             <Route path='TableauDB' element={<TableauDB />}/>
             <Route path='ChangePW' element='ChangePW'/>
             <Route path='Paramettre' element={<Paramettre />} />
