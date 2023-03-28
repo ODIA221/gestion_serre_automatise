@@ -14,8 +14,10 @@ function Header() {
   const [autre, setAutre] = useState(false)
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
+  const [close, setclose] = useState(false)
 
   
+
 
   const popup = () => {
     setOpen('d-block');

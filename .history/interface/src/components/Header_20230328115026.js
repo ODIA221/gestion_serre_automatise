@@ -4,6 +4,7 @@ import serre from '../images/Serre.jpeg'
 import image1 from '../images/imageBG1.png'
 import salade from '../images/salade.png'
 import { useState } from 'react'
+import { confirmAlert } from 'react-confirm-alert'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -17,9 +18,9 @@ function Header() {
 
   
 
+
   const popup = () => {
-    setOpen('d-block');
-  
+    setOpen('d-block')
   
 }
 
@@ -230,13 +231,21 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Enregistré avec succes',
-                            showConfirmButton: false,
-                            timer: 1500
-                          })}
+                    <button id="butM" onClick={() => confirmAlert({
+                              customUI: ({ onClose }) => {
+                                return (
+                                  <div className='custom-ui'>
+                                    <h1>Are you sure?</h1>
+                                    <p>You want to delete this file?</p>
+                                    <button onClick={onClose}>No</button>
+                                    <button onClick={() => {
+                                        this.handleClickDelete()
+                                        onClose()
+                                    }}>Yes, Delete it!</button>
+                                  </div>
+                                )
+                              }
+                            })} 
                      class="btn btn-success">Modifié</button>
               
                   </div>
@@ -326,7 +335,7 @@ function Header() {
                                 {/* Message d'erreurs */}
                                 <small>
                                     <error>
-                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoire !"}
+                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoir !"}
                                         {errors.nouveauMdp?.type === "minLength" && "5 caractères au minimum !"}
                                         {errors.nouveauMdp?.type === "maxLength" && "8 caractères au maximun !"}
                                         
@@ -363,7 +372,7 @@ function Header() {
                                 </small>
                             <div className="mdpBtn">
                                 <button onClick={closePopup} className=" btnAnnuler">Annuler</button>
-                                <button type="submit"  className="btnModifier">Modifier</button>
+                                <button type="submit"  className="btnModifier">  Modifier</button>
                             </div>
                             
                         </form>

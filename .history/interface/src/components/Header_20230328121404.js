@@ -14,8 +14,10 @@ function Header() {
   const [autre, setAutre] = useState(false)
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
+  const [close, setclose] = useState(false)
 
   
+
 
   const popup = () => {
     setOpen('d-block');
@@ -233,10 +235,10 @@ function Header() {
                     <button id="butM" onClick={() => Swal.fire({
                             position: 'top-end',
                             icon: 'success',
-                            title: 'Enregistré avec succes',
+                            title: 'Your work has been saved',
                             showConfirmButton: false,
                             timer: 1500
-                          })}
+                          }){}
                      class="btn btn-success">Modifié</button>
               
                   </div>

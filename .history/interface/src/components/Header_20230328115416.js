@@ -17,9 +17,9 @@ function Header() {
 
   
 
+
   const popup = () => {
-    setOpen('d-block');
-  
+    setOpen('d-block')
   
 }
 
@@ -230,13 +230,7 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Enregistré avec succes',
-                            showConfirmButton: false,
-                            timer: 1500
-                          })}
+                    <button id="butM"
                      class="btn btn-success">Modifié</button>
               
                   </div>
@@ -326,7 +320,7 @@ function Header() {
                                 {/* Message d'erreurs */}
                                 <small>
                                     <error>
-                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoire !"}
+                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoir !"}
                                         {errors.nouveauMdp?.type === "minLength" && "5 caractères au minimum !"}
                                         {errors.nouveauMdp?.type === "maxLength" && "8 caractères au maximun !"}
                                         

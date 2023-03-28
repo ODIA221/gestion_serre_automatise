@@ -118,7 +118,7 @@ a:hover{
   padding: 10px;
 }
 #param{
-  font-size: 18px;
+  font-size: 15px;
 }
 .modal-header{
   text-align: center;
@@ -128,7 +128,7 @@ a:hover{
   border: #2d7974;
   background-color: #2d7974;
   color: white;
-  border-radius: 7px;
+  border-radius: 8px;
 
 }
 
@@ -181,7 +181,6 @@ a:hover{
 .mdpLabel{
 
   font-size: 15px;
-  font-weight: bold;
   margin: -2rem auto;
   
 
@@ -201,7 +200,7 @@ a:hover{
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
 
@@ -214,7 +213,7 @@ a:hover{
   border-radius: 10px;
 }
 .btnModifier{
-  background-color: #198754;
+  background-color: #257275;
   color: white;
   margin: 15px;
   border: none;
@@ -222,7 +221,7 @@ a:hover{
 }
 .err {
   margin: 4px 0 0 0;
-  font-size: 10px;
+  font-size: 13px;
   color: #e64646;
 }
  
