@@ -6,7 +6,7 @@ import salade from '../images/salade.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 function Header() {
   const navigate = useNavigate()
@@ -15,6 +15,10 @@ function Header() {
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
 
+
+ 
+  
+  
 
   const popup = () => {
     setOpen('d-block');
@@ -229,13 +233,7 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Enregistré avec succes',
-                            showConfirmButton: false,
-                            timer: 5000
-                          })}
+                    <button id="butM" onClick={() => }
                      class="btn btn-success">Modifié</button>
               
                   </div>
