@@ -9,9 +9,12 @@ thead{
 }
  /* Dashboard */
 #container2{
-    margin: 2.2%;
+    margin: 3%;
+   
     display: flex;
+
     justify-content: center;
+    margin-bottom: -60%;
 }
 
 
@@ -19,56 +22,83 @@ thead{
 
 
 /* Tableau de bord */
+
 #containerGeneralDash2{
-    width: 90%;
-   display: flex;
-   text-align: center;
-   justify-content: center;
-  gap: 10%;
- 
+    width: 99%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+   
+    
+    
 }
+/* ÉTATS */
+
 .headerDash2{
-    width: 110%;
-    height: 15%;
+    width: 80%;
+    height: 10%;
     background-color: #3d6e6f;
     font-size: 40px;
     border-radius:  25px 25px 0px 0px;
+    color: white;
 }
 .containerDash2{
-    width: 110%;
-    height:410px;
+    width: 80%;
+    height:43%;
     display: flex;
-    justify-content: center;
-    gap: 5%;
-    padding: 2% 0% 2% 3%;
+    justify-content: center;  
+    gap: 8%;
+    padding: 2% 0 0 0;
+   
     border-radius:  0px 0px 25px 25px;
     background-color: #f5f8f8;
-}
-
-.btnDash{
-    display: flex;
-    justify-content: center;
-    
-  
-}
-.btnDash button{
-    font-size: 20px;
-    margin: 4%;
-}
-.imageDash2{
-   
-    border-radius: 20px;
-    height: 55%;
-}
-.imageDash22{
-    width:73%;
-    margin-left: 15%;
 }
 .elementDash2{
     display: flex;
     flex-direction: column;
-    text-align: center;
     gap: 8%;
+  
+}
+.imageDash2{
+   
+    border-radius: 20px;
+    height: 54%;
+}
+
+/* Contrôle */
+
+.headerDash2C{
+    
+    height: 10%;
+    background-color: #3d6e6f;
+    font-size: 40px;
+    border-radius:  25px 25px 0px 0px;
+    color: white;
+}
+.containerDash2C{
+   
+    height:43%;
+    display: flex;
+   
+   
+    gap: 8%;
+    padding: 1% 0 0 5%;
+    border-radius:  0px 0px 25px 25px;
+    background-color: #f5f8f8;
+}
+.btnDash{
+    display: flex;
+    justify-content: center;
+}
+.btnDash button{
+    margin: 2%;
+}
+
+.imageDashC2{
+    width:70%;
+    margin-left: 15%;
+    border-radius: 20px;
+    height: 200px;
 }
 
 
@@ -238,24 +268,31 @@ error {
 
 /* Paramètre plante */
 .historiquePlante2{
+  width: 80%;
+  display: flex;
+  gap: 10%;
+}
+.paraPlante{
+    width:45% ;
+    display: flex;
+   flex-direction: column;
   
-    margin: 2%;
-    display: flex;
-   flex-wrap: wrap;
-    text-align: center;
-    justify-content: center;
-    gap: 40px;
-    font-size: 70px;
 }
-.divHistoriquePlante2{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 7%;
-}
-.btnHistoriquePlante2{
-    border-radius: 10px;
+.paraNom{
     background-color: #377a7c;
     color: white;
-    width: 30%;
+    text-align: center;
+    
+    border-radius:  25px 25px 0px 0px;
+}
+.groupChampPara{
+    padding:5%;
+    
+    background-color: #f5f8f8;
+
+}
+.champPara{
+    display: flex;
+    gap: 10%;
+    margin: 5%;
 }
