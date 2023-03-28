@@ -164,10 +164,9 @@ error {
 .corp
 {
     margin: 10px;
-    background-image: url(../images/rfid1.jpeg);
+    background-image: url(../images/rfid.gif);
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 
 .input {
