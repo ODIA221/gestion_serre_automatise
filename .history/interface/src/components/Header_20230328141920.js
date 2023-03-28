@@ -16,10 +16,6 @@ function Header() {
   const [debitdif, setDebitdif] = useState(false)
 
 
- 
-  
-  
-
   const popup = () => {
     setOpen('d-block');
   

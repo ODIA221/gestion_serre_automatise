@@ -238,7 +238,7 @@ function Header() {
                             icon: 'success',
                             title: 'Enregistré avec succes',
                             showConfirmButton: false,
-                            timer: 5000
+                            timer: 2000
                           })}
                      class="btn btn-success">Modifié</button>
               

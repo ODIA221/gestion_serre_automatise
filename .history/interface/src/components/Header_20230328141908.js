@@ -16,10 +16,6 @@ function Header() {
   const [debitdif, setDebitdif] = useState(false)
 
 
- 
-  
-  
-
   const popup = () => {
     setOpen('d-block');
   
@@ -233,13 +229,22 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Enregistré avec succes',
-                            showConfirmButton: false,
-                            timer: 5000
-                          })}
+                    <button id="butM" onClick={() => const Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+})
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully'
+})
                      class="btn btn-success">Modifié</button>
               
                   </div>
