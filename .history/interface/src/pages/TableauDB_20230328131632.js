@@ -11,7 +11,9 @@ import toitF from '../images/toitF.png'
 import nonArrosage from '../images/nonArrosage.png'
 import arrosage from '../images/arrosage.gif'
 const TableauDB = () => {
-
+  let x
+  let y
+  let z
   
   let porte = "Ouvert" 
   let extracteur = "Éteint"
@@ -53,7 +55,7 @@ const TableauDB = () => {
   return (
     <div id='containerGeneralDash2'>
       <div>
-      <div class='headerDash2'>États</div>
+      <div class='headerDash2'>Éta</div>
       <div class='containerDash2'>
 
           <div class='elementDash2'>
@@ -76,7 +78,7 @@ const TableauDB = () => {
       </div>
       </div>
       <div >
-      <div class='headerDash2C '>Contrôle</div>
+      <div class='headerDash2C '>CONTRÔLE</div>
       <div class='containerDash2C '>
           <div class='elementDash2 '>
             <h5>Toit de la serre</h5>

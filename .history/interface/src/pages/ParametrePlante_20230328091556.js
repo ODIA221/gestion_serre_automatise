@@ -4,7 +4,7 @@ const ParametrePlante = () => {
   return (
     <div class='historiquePlante2'>
        <div class='paraPlante'> 
-        <div class='paraNom'><h2>Tomate</h2> </div>
+        <div class='paraNom'><h1><b>Tomate</b></h1> </div>
        
         <div class='groupChampPara'>
         <div class='champPara'>
@@ -26,7 +26,7 @@ const ParametrePlante = () => {
         </div>
       </div>
       <div class='paraPlante'> 
-        <div class='paraNom'><h2>Salade</h2> </div>
+        <div class='paraNom'><h1><b>Salade</b></h1> </div>
        
         <div class='groupChampPara'>
         <div class='champPara'>

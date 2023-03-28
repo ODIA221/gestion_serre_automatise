@@ -15,7 +15,6 @@ function Header() {
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
 
-
   
 
   const popup = () => {
@@ -231,7 +230,7 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
+                    <button id="butM" onClick={(true) => Swal.fire({
                             position: 'top-end',
                             icon: 'success',
                             title: 'Enregistré avec succes',

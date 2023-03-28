@@ -26,7 +26,7 @@ const ParametrePlante = () => {
         </div>
       </div>
       <div class='paraPlante'> 
-        <div class='paraNom'><h2>Salade</h2> </div>
+        <div class='paraNom'><h1>Salade</h1> </div>
        
         <div class='groupChampPara'>
         <div class='champPara'>

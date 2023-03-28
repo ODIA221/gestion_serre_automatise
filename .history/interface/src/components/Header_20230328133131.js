@@ -20,6 +20,7 @@ function Header() {
 
   const popup = () => {
     setOpen('d-block');
+    setSauv(false)
   
   
 }

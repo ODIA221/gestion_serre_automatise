@@ -76,7 +76,7 @@ const TableauDB = () => {
       </div>
       </div>
       <div >
-      <div class='headerDash2C '>Contrôle</div>
+      <div class='headerDash2C '>controole</div>
       <div class='containerDash2C '>
           <div class='elementDash2 '>
             <h5>Toit de la serre</h5>

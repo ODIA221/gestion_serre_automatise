@@ -15,7 +15,6 @@ function Header() {
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
 
-
   
 
   const popup = () => {

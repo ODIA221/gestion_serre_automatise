@@ -14,6 +14,7 @@ function Header() {
   const [autre, setAutre] = useState(false)
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
+  const [sauv, setSauv] = useState(false)
 
 
   
@@ -22,6 +23,18 @@ function Header() {
     setOpen('d-block');
   
   
+  
+}
+const sauv = (e) =>{
+  if(e.target.value === 'save'){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Enregistré avec succes',
+      showConfirmButton: false,
+      timer: 1500
+    })}
+  }
 }
 
   const autres = (e) => {
@@ -231,13 +244,8 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
                                  
-                    <button id="butM" onClick={() => Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Enregistré avec succes',
-                            showConfirmButton: false,
-                            timer: 1500
-                          })}
+                    <button id="butM" value= "save" onClick={() => setSauv(true)}
+                    onChange={(e) => sauv(e)} 
                      class="btn btn-success">Modifié</button>
               
                   </div>
