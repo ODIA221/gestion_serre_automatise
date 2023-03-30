@@ -265,7 +265,7 @@ function Header() {
                                         name="mdp1"
                                         type="password"
                                         {...register("actuelMdp", {
-                                            required: "Champ Obligatoir",
+                                            required: "Champ Obligatoire",
                                             
                                             minLength: {
                                               value: 5,
@@ -291,7 +291,7 @@ function Header() {
                                         type="password"
                                         placeholder="..."
                                         {...register("nouveauMdp", {
-                                          required: "Champ Obligatoir",
+                                          required: "Champ Obligatoire",
                                           
                                           minLength: {
                                             value: 5,
@@ -316,7 +316,7 @@ function Header() {
                                         placeholder="..."
                                         type="password"
                                         {...register("confirmMdp", {
-                                          required: "Champ Obligatoir",
+                                          required: "Champ Obligatoire",
 
                                           validate: (value) => 
                                           value=== nouveauMdp || "Les mots de passe ne conrrespondent pas !",

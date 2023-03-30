@@ -1,5 +1,5 @@
 /* import Axios from "axios" */
-import React/* , {useState, useEffect} */ from "react";
+import React, {useState, useEffect} from "react";
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
@@ -7,26 +7,39 @@ import Paramettre from './pages/Paramettre';
 import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
 import  ParametrePlante  from './pages/ParametrePlante';
-/* import { useState } from "react"; */
+import axios from "axios";
+
+/* endPoint api */
+const ENDPOINT = "http://localhost:2000/api/connexion";
+
+
+
 function App() {
 
-      /* Connexion du front et le bacck */
- /*  const [data, setData] = useState("");
-  console.log(data);
+  /*connecter api*/
+      /* connect to api */
+      const  [data , setData] = useState("");
 
-  const getaData = async() => {
-    const response = await Axios.post("http:localhost:2000/api/connexion");
-    setData (response.data)
-    
-  }
-
-  useEffect(() => {
-    getaData()
-    console.log(getaData())
-  },[]); */
-  /* fin */
-
-
+      useEffect(() => {
+          try{
+              axios
+              .post(ENDPOINT)
+              .then(function(response){
+                  console.log("check response ==> ", response);
+                  /* setResponse(response.data.response); */
+              })
+              .catch(function(error){
+                  console.log("check error  ==>", error)
+  
+              })
+              .then(function(){
+                  console.log("check executed  ==>")
+              });
+          }catch(err){
+              alert(err); //failed to match
+          }
+      }, []);
+   
 
 
 

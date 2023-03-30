@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
 import { useForm } from "react-hook-form";
 import "./Style2.css";
-import Axios from "axios";
+import axios from "axios";
 
-
-
+/* endPoint api */
+/* const ENDPOINT = "http://localhost:2000/api/connexion" */
 /* 
 const baseURL = "http:localhost:2000/api/connexion"; */
 
 const LoginForm = () => {
+
 
     /*  */
     const {
@@ -24,26 +25,56 @@ const LoginForm = () => {
       /*  */
       const onSubmit = (data) => console.log(data);
 
+/* pour se connecter */
+/* 
+const connexion = (e) =>{
+    e.preventDefault();
+
+    const data = {
+        email: document.getElementById("email").value, 
+        password: document.getElementById("mdp").value 
+    }
+    try{
+        axios
+        .post(ENDPOINT, data)
+        .then(function(response){
+            alert(response.data.message)
+            console.log("check response ==> ", response);
+            setResponse(response.data.response);
+        })
+        .catch(function(error){
+            console.log("check error  ==>", error)
+
+        })
+        .then(function(){
+            console.log("check executed  ==>")
+        });
+    }catch(err){
+        alert(err); //failed to match
+    }
+} */
 
 
-      /*  */
+      /* pour se connecter */
+    /*   const [email, setEmail] = useState("");
+      const [password, setPass] = useState(""); */
 
-
+/* 
       function connexion(e) {
         e.preventDefault();
-/*         let request = {
+        let request = {
             email: document.getElementById("email").value, 
             password: document.getElementById("mdp").value 
         }
-        Axios.post('http:localhost:2000/api/connexion', request)
+        axios.post('http://localhost:2000/api/connexion', request)
         .then(resp => {
             alert(resp.data.message);
         } )
         .catch(err =>{
             console.log(err)
-        }) */
+        })
 
-        Axios.post('/http:localhost:2000/api/connexion', {
+        axios.post('/http://localhost:2000/api/connexion', {
             email: document.getElementById("email").value, 
             password: document.getElementById("password").value 
         })
@@ -55,7 +86,7 @@ const LoginForm = () => {
         });
         
 
-    }
+    } */
 /*  */
     return (
         <div className="body">
@@ -81,7 +112,7 @@ const LoginForm = () => {
                             type="text" 
                             placeholder="Email" 
                             {...register("email", {
-                                required: "Champ Obligatoir",
+                                required: "Champ Obligatoire",
                                 pattern:{
                                     value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i,
                                     message: "Format du mail incorrect",
@@ -105,8 +136,8 @@ const LoginForm = () => {
                                 className="input"
                                 type="password" 
                                 placeholder="Mot de passe" 
-                                {...register("mdp", {
-                                    required: "Champ Obligatoir",
+                                {...register("password", {
+                                    required: "Champ Obligatoire",
                                     
                                     minLength: {
                                     value: 5,
@@ -119,12 +150,12 @@ const LoginForm = () => {
                                 })}
                             />
                             {/* Message d'erreurs */}
-                            {errors.mdp && <small className='err'>{errors.mdp.message }</small>}
+                            {errors.password && <small className='err'>{errors.password.message }</small>}
                         </div>
                     
                     </div>
 
-                    <button type="submit" className="login-btn" onClick={(e) =>connexion(e)}>Connexion</button>
+                    <button type="submit" className="login-btn" /* onClick={(e) =>connexion(e)} */>Connexion</button>
                 
                 </form>
 
