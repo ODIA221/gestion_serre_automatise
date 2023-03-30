@@ -61,7 +61,7 @@ const LoginForm = () => {
         <div className="body">
             {/* div rfid  connexion*/}
             <div  className="corp">
-                <h1 className="labelRfid" > RFID</h1>
+                {/* <h1 className="labelRfid" > RFID</h1> */}
 
             </div>
             {/* div form connexion*/}
