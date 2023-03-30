@@ -6,15 +6,26 @@ const mongoose = require('mongoose')
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
-//const app_io = require('./arduino')
+
 
 
 
 // Express settings
 const app = express()
+/* encoding urls */
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+/* header */
+/* app.use(function(res,req , next){
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+}); */
+
 
 const url = mongoose  
-  .connect("mongodb+srv://odia221:odia221@cluster0.4sxdb68.mongodb.net/serre_automatisee?retryWrites=true&w=majority")
+  .connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1 ")/* mongodb+srv://odia221:odia221@cluster0.4sxdb68.mongodb.net/serre_automatisee?retryWrites=true&w=majority */
   .then((x) => {
     console.log(`Vous êtes connecté à la base de donnée : "${x.connections[0].name}"`)
   })
@@ -59,6 +70,10 @@ app.use(function (err, req, res, next) {
   console.error(err.message)
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
+  /* res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next(); */
 })
 
 
