@@ -47,7 +47,7 @@ const connexion = (/* e */) =>{
                 /* stockage du token dans localStorage */
                 localStorage.setItem('token', response?.data?.token)
                 /* redirection si token est bon */
-                window.location.pathname = 'Dashboard';
+                window.location.pathname = 'Dashboard/TableauDB';
             } 
           
           
