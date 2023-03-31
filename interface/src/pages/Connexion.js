@@ -1,5 +1,4 @@
 import React/* , { Component, useState }  */from "react";
-import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import "./Style2.css";
 import axios from "axios";
@@ -10,8 +9,6 @@ const ENDPOINT = "http://localhost:5000/api/connexion"
 const baseURL = "http:localhost:2000/api/connexion"; */
 
 const LoginForm = () => {
-
-    const navigate = useNavigate();
 
 
   
@@ -48,7 +45,7 @@ const connexion = (/* e */) =>{
                 localStorage.setItem('token', response?.data?.token)
                 /* redirection si token est bon */
                 window.location.pathname = 'Dashboard/TableauDB';
-            } 
+            }
           
           
             
@@ -66,38 +63,6 @@ const connexion = (/* e */) =>{
     }
 } 
 
-
-      /* pour se connecter */
-   /*    const [email, setEmail] = useState("");
-      const [password, setPass] = useState("");  */
-
-/*       function connexion(e) {
-        e.preventDefault();
-        let request = {
-            email: document.getElementById("email").value, 
-            password: document.getElementById("password").value 
-        }
-        axios.post('http://localhost:2000/api/connexion', request)
-        .then(resp => {
-            alert(resp.data.message);
-        } )
-        .catch(err =>{
-            console.log(err)
-        })
-
-        axios.post('/http://localhost:2000/api/connexion', {
-            email: document.getElementById("email").value, 
-            password: document.getElementById("password").value 
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        
-
-    }  */
 /*  */
     return (
         <div className="body">
