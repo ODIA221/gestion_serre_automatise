@@ -147,7 +147,7 @@ function Header() {
               {/*  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> */}
             </div>
             <div class="modal-body">
-              <form id='param'>
+              <form id='param'/>
                 <div class='d-flex flex-column'>
                   <label class="labe1">Nom du plante</label>
                  {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input">
@@ -230,23 +230,23 @@ function Header() {
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
 {/*                     <button onClick={() => alert("Engistrement reussi!")} class="butM">Modifié</button>
- */}                    
-                    <button type="button" class="btn btn-success" id="liveToastBtn">Modifié</button>
+ */}                    <button type="button" class="btn btn-success" id="liveToastBtn">Modifié</button>
 
-                          <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"/>
-                            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                              <div class="toast-header">
-                                <img src="..." class="rounded me-2" alt="..."/>
-                                <strong class="me-auto">Bootstrap</strong>
-                                <small>11 mins ago</small>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                              </div>
-                              <div class="toast-body">
-                                Hello, world! This is a toast message.
-                              </div>
-                            </div>
+                                <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11"/>
+                                  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                                    <div class="toast-header">
+{/*                                       <img src="..." class="rounded me-2" alt="...">
+ */}                                     <img src=".." alt="..." class="rounded me-2"/>
 
-
+                                      <strong class="me-auto">Bootstrap</strong>
+                                      <small>11 mins ago</small>
+                                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                                    </div>
+                                    <div class="toast-body">
+                                      Hello, world! This is a toast message.
+                                    </div>
+                                  </div>
+                                </div>
                   </div>
                 </div>
               </form>
