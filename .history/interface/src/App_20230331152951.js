@@ -53,7 +53,7 @@ function App() {
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
             <Route path='TableauDB' element={<TableauDB />}/>
-
+<<<<<<<<< Temporary merge branch 1
             {/* <Route path='ChangePW' element='ChangePW'/> */}
 
         </Route>
