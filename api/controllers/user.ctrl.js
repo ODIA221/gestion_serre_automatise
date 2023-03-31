@@ -18,13 +18,13 @@ router.post('/ajouter', (req, res, next) => {
         user.save()
           .then((response) => {
             console.log(response);
-            res.status(201).json({
+            return res.status(201).json({
               message: 'Inscription réussie !',
               result: response,
             })
           })
           .catch((error) => {
-            res.status(409).json({
+            return res.status(409).json({
               error: error.message.split("email:")[1],
             })
           })
@@ -64,7 +64,7 @@ router.patch('/modifierMdp/:id', async(req, res) => {
       }
   }
   catch (error) {
-      res.status(400).json({ message: error.message })
+    return res.status(400).json({ message: error.message })
   }
 })
 
@@ -77,7 +77,7 @@ router.post('/connexion', (req, res) => {
     "Access-Control-Allow-Methods": "*",
   })
 
-  res.send({response : "je suis connecté au front"}).status(200);
+  /* return res.send({response : ""}).status(200); */
 
 
 
@@ -117,7 +117,7 @@ router.post('/connexion', (req, res) => {
           expiresIn: '1h',
         },
       )
-      res.status(200).json({
+      return res.status(200).json({
         token: jwtToken,
         expiresIn: 3600,
         _id: getUser._id,
@@ -158,7 +158,7 @@ router.route('/profile/:id').get(authorize, (req, res, next) => {
     if (error) {
       return next(error)
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         msg: data,
       })
     }
