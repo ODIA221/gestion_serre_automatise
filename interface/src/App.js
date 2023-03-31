@@ -6,10 +6,10 @@ import { Route, Routes } from 'react-router-dom';
 import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
 import  ParametrePlante  from './pages/ParametrePlante';
-import axios from "axios";
+import axios from "axios"
 
 /* endPoint api */
-const ENDPOINT = "http://localhost:2000/api/connexion";
+const ENDPOINT = "http://localhost:5000/api/connexion";
 
 
 
@@ -25,7 +25,7 @@ function App() {
               .post(ENDPOINT)
               .then(function(response){
                   console.log("check response ==> ", response);
-                  /* setResponse(response.data.response); */
+                  /* setData(response.data.response); */
               })
               .catch(function(error){
                   console.log("check error  ==>", error)
@@ -53,7 +53,8 @@ function App() {
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
             <Route path='TableauDB' element={<TableauDB />}/>
-            <Route path='ChangePW' element='ChangePW'/>
+
+            {/* <Route path='ChangePW' element='ChangePW'/> */}
 
         </Route>
         <Route  path='/*'> Page introuvable</Route>

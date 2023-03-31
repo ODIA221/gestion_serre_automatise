@@ -7,7 +7,7 @@ const authorize = require('../authentification/auth')
 mongoose = require('mongoose')
 
 // Inscription
-router.post('/ajouter', (req, res, next) => {
+router.post('/ajouter',  (req, res, next) => {
     console.log(req.body)
 
       bcrypt.hash(req.body.password, 10).then((hash) => {
@@ -18,15 +18,16 @@ router.post('/ajouter', (req, res, next) => {
         user.save()
           .then((response) => {
             console.log(response);
-            res.status(201).json({
+            return res.status(201).json({
               message: 'Inscription réussie !',
               result: response,
             })
           })
           .catch((error) => {
-            res.status(409).json({
+            return res.status(409).json({
               error: error.message.split("email:")[1],
             })
+            
           })
       })
   },
@@ -64,12 +65,23 @@ router.patch('/modifierMdp/:id', async(req, res) => {
       }
   }
   catch (error) {
-      res.status(400).json({ message: error.message })
+    return res.status(400).json({ message: error.message })
   }
 })
 
 // Connexion
-router.post('/connexion', (req, res, next) => {
+router.post('/connexion', (req, res) => {
+
+  res.header({
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "*",
+  })
+
+  /* return res.send({response : ""}).status(200); */
+
+
+
   let getUser
   userSchema
     .findOne({
@@ -106,15 +118,17 @@ router.post('/connexion', (req, res, next) => {
           expiresIn: '1h',
         },
       )
-      res.status(200).json({
+      return res.status(200).json({
         token: jwtToken,
         expiresIn: 3600,
         _id: getUser._id,
       })
     })
     .catch((err) => {
-      return res.status(401).json({
+      return
+      res.status(401).json({
         message: 'Authentication échouée',
+        
       })
     })
 })
@@ -147,7 +161,7 @@ router.route('/profile/:id').get(authorize, (req, res, next) => {
     if (error) {
       return next(error)
     } else {
-      res.status(200).json({
+      return res.status(200).json({
         msg: data,
       })
     }

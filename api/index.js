@@ -8,24 +8,29 @@ const api = require('./controllers/user.ctrl')
 
 
 
-
-
 // Express settings
 const app = express()
+/* cors */
+app.use(cors())
+/* connexion bd */
+
 /* encoding urls */
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-/* header */
-/* app.use(function(res,req , next){
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-}); */
+
+//formatage datas 
+/* app.use(bodyParser.json()) */
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+)
 
 
-const url = mongoose  
-  .connect("mongodb+srv://mariecherif:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutomatise")/* mongodb+srv://odia221:odia221@cluster0.4sxdb68.mongodb.net/serre_automatisee?retryWrites=true&w=majority */
+
+
+const url = mongoose  /* mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1 */
+  .connect("mongodb+srv://odia221:odia221@cluster0.4sxdb68.mongodb.net/serre_automatisee?retryWrites=true&w=majority ")/*  */
   .then((x) => {
     console.log(`Vous êtes connecté à la base de donnée : "${x.connections[0].name}"`)
   })
@@ -37,15 +42,6 @@ const url = mongoose
 
 
 
-//formatage datas 
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  }),
-)
-app.use(cors())
-
 // Serve static resources
 app.use('/api', api)
 
@@ -53,7 +49,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 2000
+const port = process.env.PORT || 5000
 
 const servers = app.listen(port, () => {
   console.log('Écoute sur le port : ' + port)
@@ -70,10 +66,7 @@ app.use(function (err, req, res, next) {
   console.error(err.message)
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
-  /* res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next(); */
+
 })
 
 
