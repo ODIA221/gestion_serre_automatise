@@ -33,7 +33,7 @@ router.post('/ajouter',  (req, res, next) => {
   },
 )
 //modif mdp
-/* router.patch('/modifierMdp/:id', async(req, res) => {
+router.patch('/modifierMdp/:id', async(req, res) => {
   try {
         let { actuelMdp, nouveauMdp } = req.body;
         const id = req.params.id;
@@ -68,7 +68,7 @@ router.post('/ajouter',  (req, res, next) => {
     return res.status(400).json({ message: error.message })
   }
 })
- */
+
 // Connexion
 router.post('/connexion', (req, res) => {
 
@@ -187,9 +187,7 @@ router.route('/modifier/:id').put((req, res, next) => {
 })
 
 // Modification mot de passe
-/* router.route('/updatepassword/:id').put(authorize, async(req, res) => {
- */  router.patch('/modifierMdp/:id', async(req, res) => {
-
+router.route('/updatepassword/:id').put(authorize, async(req, res) => {
   try {
   const id = req.params.id;
   const updatedData = req.body;

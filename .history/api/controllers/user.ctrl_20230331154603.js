@@ -33,7 +33,7 @@ router.post('/ajouter',  (req, res, next) => {
   },
 )
 //modif mdp
-/* router.patch('/modifierMdp/:id', async(req, res) => {
+router.patch('/modifierMdp/:id', async(req, res) => {
   try {
         let { actuelMdp, nouveauMdp } = req.body;
         const id = req.params.id;
@@ -68,7 +68,7 @@ router.post('/ajouter',  (req, res, next) => {
     return res.status(400).json({ message: error.message })
   }
 })
- */
+
 // Connexion
 router.post('/connexion', (req, res) => {
 
@@ -187,25 +187,23 @@ router.route('/modifier/:id').put((req, res, next) => {
 })
 
 // Modification mot de passe
-/* router.route('/updatepassword/:id').put(authorize, async(req, res) => {
- */  router.patch('/modifierMdp/:id', async(req, res) => {
-
+router.route('/updatepassword/:id').put(authorize, async(req, res) => {
   try {
   const id = req.params.id;
   const updatedData = req.body;
   const options = { new: true };
-  const actuelMdp= updatedData.actuelMdp
+  const ancienpassword= updatedData.ancienpassword
   const user =await userSchema.findById(id)
-  const comp = await bcrypt.compare(actuelMdp, user.nouveauMdp)
- console.log(bcrypt.compare(actuelMdp, user.nouveauMdp));
+  const comp = await bcrypt.compare(ancienpassword, user.password)
+ console.log(bcrypt.compare(ancienpassword, user.password));
   if(!comp){
     res.status(400).json({message: "veuillez saisir votre actuel mot de passe!"})
     return;
   }
   
-      updatedData.nouveauMdp
-      const hash = await bcrypt.hash(updatedData.nouveauMdp, 10);
-      updatedData.nouveauMdp = hash;
+      updatedData.password
+      const hash = await bcrypt.hash(updatedData.password, 10);
+      updatedData.password = hash;
       
               const result = await userSchema.findByIdAndUpdate(
               id, updatedData, options);

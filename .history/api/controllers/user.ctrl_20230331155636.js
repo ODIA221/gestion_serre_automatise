@@ -187,8 +187,8 @@ router.route('/modifier/:id').put((req, res, next) => {
 })
 
 // Modification mot de passe
-/* router.route('/updatepassword/:id').put(authorize, async(req, res) => {
- */  router.patch('/modifierMdp/:id', async(req, res) => {
+router.route('/updatepassword/:id').put(authorize, async(req, res) => {
+  router.patch('/modifierMdp/:id', async(req, res) => {
 
   try {
   const id = req.params.id;
