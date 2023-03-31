@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   
 
-    /*  */
+    /*  hooks-form*/
     const {
         register,
         formState: { errors },
@@ -25,12 +25,10 @@ const LoginForm = () => {
   
       
       /*  */
-      const onSubmit = (data) => console.log(data);
+      const onSubmit = (data) => console.log("");
 
 /* pour se connecter */
-const connexion = (/* e */) =>{
-    /* e.preventDefault(); */
-
+const connexion = () =>{
     const data = {
         email: document.getElementById("email").value, 
         password: document.getElementById("password").value 
@@ -45,18 +43,13 @@ const connexion = (/* e */) =>{
                 localStorage.setItem('token', response?.data?.token)
                 /* redirection si token est bon */
                 window.location.pathname = 'Dashboard/TableauDB';
-            }
-          
-          
-            
-            
+            }       
         })
         .catch(function(error){
-            console.log("check error  ==>", error)
-
+            console.log("Erreur  ==>", error)
         })
         .then(function(){
-            console.log("c'est bon")
+            console.log("Coll")
         });
     }catch(err){
         alert(err); //failed to match
