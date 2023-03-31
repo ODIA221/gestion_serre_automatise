@@ -26,7 +26,7 @@ function App() {
               .post(ENDPOINT)
               .then(function(response){
                   console.log("check response ==> ", response);
-                  /* setResponse(response.data.response); */
+                  /* setData(response.data.response); */
               })
               .catch(function(error){
                   console.log("check error  ==>", error)

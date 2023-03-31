@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React/* , {useEffect, useState} */ from "react";
 import { useForm } from "react-hook-form";
 import "./Style2.css";
 import axios from "axios";
@@ -56,15 +56,14 @@ const connexion = (e) =>{
 
 
       /* pour se connecter */
-    /*   const [email, setEmail] = useState("");
-      const [password, setPass] = useState(""); */
+   /*    const [email, setEmail] = useState("");
+      const [password, setPass] = useState("");  */
 
-/* 
       function connexion(e) {
         e.preventDefault();
         let request = {
             email: document.getElementById("email").value, 
-            password: document.getElementById("mdp").value 
+            password: document.getElementById("password").value 
         }
         axios.post('http://localhost:2000/api/connexion', request)
         .then(resp => {
@@ -86,7 +85,7 @@ const connexion = (e) =>{
         });
         
 
-    } */
+    } 
 /*  */
     return (
         <div className="body">
@@ -155,7 +154,7 @@ const connexion = (e) =>{
                     
                     </div>
 
-                    <button type="submit" className="login-btn" /* onClick={(e) =>connexion(e)} */>Connexion</button>
+                    <button type="submit" className="login-btn" onClick={(e) =>connexion(e)}>Connexion</button>
                 
                 </form>
 
