@@ -69,12 +69,17 @@ router.patch('/modifierMdp/:id', async(req, res) => {
 })
 
 // Connexion
-router.post('/connexion', (req, res, next) => {
+router.post('/connexion', (req, res) => {
 
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
+  res.header({
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "*",
+  })
+
+  res.send({response : "je suis connecté au front"}).status(200);
+
+
 
   let getUser
   userSchema

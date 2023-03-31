@@ -8,20 +8,24 @@ const api = require('./controllers/user.ctrl')
 
 
 
-
-
 // Express settings
 const app = express()
+/* cors */
+app.use(cors())
+/* connexion bd */
+
 /* encoding urls */
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-/* header */
-/* app.use(function(res,req , next){
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-}); */
+
+//formatage datas 
+/* app.use(bodyParser.json()) */
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  }),
+)
+
 
 
 const url = mongoose  
@@ -36,15 +40,6 @@ const url = mongoose
 
 
 
-
-//formatage datas 
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  }),
-)
-app.use(cors())
 
 // Serve static resources
 app.use('/api', api)
@@ -70,10 +65,7 @@ app.use(function (err, req, res, next) {
   console.error(err.message)
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
-  /* res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next(); */
+
 })
 
 
