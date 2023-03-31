@@ -15,9 +15,13 @@ function Header() {
   const [debitdif, setDebitdif] = useState(false)
 
 
+
   const popup = () => {
-    setOpen('d-block')
+    setOpen('d-block')  
+  
   }
+  
+
   const autres = (e) => {
     if (e.target.value === "autres") {
       setAutre(true)
@@ -56,23 +60,20 @@ function Header() {
         register,
         formState: { errors },
         handleSubmit,
-      } = useForm();
+        watch,
+      } = useForm(
+        {mode:"onChange"}
+      );
 
     /* déclaration onSubmit */
-    const onSubmit  = (data) => console.log(data);
+    const onSubmit  = (data) => console.log (data);
 
     /* hooks popup */
-    const [popupMdp,setPop]=useState(false, {
-        mdp1:"",
-        mdp2:"",
-        mdp3:""
-    })
-    /*  */
-    const [error, setError] = useState({
-        mdp1:"",
-        mdp2:"",
-        mdp3:"",
-      })
+    const [popupMdp,setPop]=useState(false);
+
+    /* recupérer input  Mdp entrer  */
+    const nouveauMdp = watch ('nouveauMdp');
+ 
     /* fonction afficher popup */
     const handleClickOpen=()=>{
         setPop(true)
@@ -150,7 +151,7 @@ function Header() {
                     <option>Salade</option>
                     <option>Tomate</option>
                     <option value='autres'>Autres</option>
-                  </select>: <input type="text" placeholder='donnez une plante'/>}
+                  </select>: <input type="text" placeholder='donnez une plante' required/>}
                   
 
                   {!autre && <>
@@ -225,7 +226,22 @@ function Header() {
 
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
-                    <button class="butM">Modifié</button>
+{/*                     <button onClick={() => alert("Engistrement reussi!")} class="butM">Modifié</button>
+ */}                    
+                    <button type="button" class="btn btn-success" className='butM' id="liveToastBtn">Modifié</button>
+
+                          <div class="position-fixed bottom-0 end-0 p-3" style={{"z-index": 11}}/>
+                            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                              <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="..."/>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                              </div>
+                              <div class="toast-body">
+                                <b>Engistrement reussi !</b>
+                              </div>
+                            </div>
+
+
                   </div>
                 </div>
               </form>
@@ -266,29 +282,25 @@ function Header() {
                                         className="mdpInput"
                                         placeholder="..."
                                         name="mdp1"
-                                        value={popupMdp.mdp1}
                                         type="password"
-                                        /* onChange={onInputChange}
-                                        onBlur={validateInput} */
                                         {...register("actuelMdp", {
-                                            required: true,
-                                            minLength: 5,
-                                            maxLength: 8,
+                                            required: "Champ Obligatoire",
+                                            
+                                            minLength: {
+                                              value: 5,
+                                              message: "5 Caractètes au minimum"
+                                            },
+                                            maxLength: {
+                                              value:10,
+                                              message: "10 Caractètes au maximum"
+                                            }
                                             
                                             
                                         })}
                                     />
-                                </div>
-                                {/* Message d'erreurs */}
-                                <small>
-                                    <error>
-                                        {errors.actuelMdp?.type === "required" && "Champs obligatoir !"}
-                                        {errors.actuelMdp?.type === "minLength" && "5 caractères au minimum !"}
-                                        {errors.actuelMdp?.type === "maxLength" && "8 caractères au maximun !"}
-                            
-                                    </error>
-
-                                </small>   
+                                    {/* Message d'erreurs */}
+                                    {errors.actuelMdp && <small className='err'>{errors.actuelMdp.message }</small>}
+                                </div>  
                                 <div>
                                     <div>
                                         <label className="mdpLabel">nouveau Mot de Passe</label>
@@ -296,30 +308,24 @@ function Header() {
                                     <input 
                                         className="mdpInput"
                                         type="password"
-                                        name="mdp2"
-                                        value={popupMdp.mdp2}
                                         placeholder="..."
-                                       /*  onChange={onInputChange}
-                                        onBlur={validateInput} */
                                         {...register("nouveauMdp", {
-                                            required: true,
-                                            minLength: 5,
-                                            maxLength: 8,
-                                            
-                                        })}
-                                    />
-                                </div>                                     
-                                
-                                {/* Message d'erreurs */}
-                                <small>
-                                    <error>
-                                        {errors.nouveauMdp?.type === "required" && "Champs obligatoir !"}
-                                        {errors.nouveauMdp?.type === "minLength" && "5 caractères au minimum !"}
-                                        {errors.nouveauMdp?.type === "maxLength" && "8 caractères au maximun !"}
-                                        
-                                    </error>
-
-                                </small>
+                                          required: "Champ Obligatoire",
+                                          
+                                          minLength: {
+                                            value: 5,
+                                            message: "5 Caractètes au minimum"
+                                          },
+                                          maxLength: {
+                                            value:10,
+                                            message: "10 Caractètes au maximum"
+                                          }
+                                          
+                                          
+                                      })}
+                                    />{/* Message d'erreurs */}
+                                    {errors.nouveauMdp && <small className='err'>{errors.nouveauMdp.message }</small>}
+                                </div>
                                 <div>
                                     <label className="mdpLabel">Confirmation Mot de Passe</label>
                                 </div>
@@ -327,27 +333,28 @@ function Header() {
                                     <input 
                                         className="mdpInput"
                                         placeholder="..."
-                                        name="mdp3"
-                                        value={popupMdp.mdp3}
-                                       /*  onChange={onInputChange}
-                                        onBlur={validateInput} */
                                         type="password"
                                         {...register("confirmMdp", {
-                                            required: true,
-                                            minLength: 5,
-                                            maxLength: 8,
-                                        })}
-                                    />
-                                </div>
-                                {/* Message d'erreurs */}
-                                <small>
-                                    <error>
-                                        {errors.confirmMdp?.type === "required" && "Champs obligatoir !"}
-                                        {errors.confirmMdp?.type === ("popup.confirmMdp !== popnouveauMdp") && "0000"}
-                                        {errors.confirmPassword && <span className='err'>{errors.confirmMdp}</span>}
-                                    </error>
+                                          required: "Champ Obligatoire",
+                                          
+                                          minLength: {
+                                            value: 5,
+                                            message: "5 Caractètes au minimum"
+                                          },
+                                          maxLength: {
+                                            value:10,
+                                            message: "10 Caractètes au maximum"
+                                          },
 
-                                </small>
+                                          validate: (value) => 
+                                          value=== nouveauMdp || "Les mots de passe ne conrrespondent pas !",
+                                          
+                                          
+                                      })}
+                                    />
+                                    {/* Message d'erreurs */}
+                                    {errors.confirmMdp && <small className='err'>{errors.confirmMdp.message }</small>}
+                                </div>
                             <div className="mdpBtn">
                                 <button onClick={closePopup} className=" btnAnnuler">Annuler</button>
                                 <button type="submit" className="btnModifier">  Modifier</button>
