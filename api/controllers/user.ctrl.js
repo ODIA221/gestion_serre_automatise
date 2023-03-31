@@ -7,7 +7,7 @@ const authorize = require('../authentification/auth')
 mongoose = require('mongoose')
 
 // Inscription
-router.post('/ajouter', (req, res, next) => {
+router.post('/ajouter',  (req, res, next) => {
     console.log(req.body)
 
       bcrypt.hash(req.body.password, 10).then((hash) => {
@@ -27,6 +27,7 @@ router.post('/ajouter', (req, res, next) => {
             return res.status(409).json({
               error: error.message.split("email:")[1],
             })
+            
           })
       })
   },
@@ -124,8 +125,10 @@ router.post('/connexion', (req, res) => {
       })
     })
     .catch((err) => {
-      return res.status(401).json({
+      return
+      res.status(401).json({
         message: 'Authentication échouée',
+        
       })
     })
 })
