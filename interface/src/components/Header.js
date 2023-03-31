@@ -14,6 +14,12 @@ function Header() {
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
 
+      // Gfonction de  déconnexion
+        let logout = () => {
+          localStorage.removeItem('token')
+          navigate('/')
+      }
+
 
 
   const popup = () => {
@@ -104,7 +110,7 @@ function Header() {
           <option value='/Dashboard/ParametrePlante' >Historique des plantes</option>
           <option value='/Dashboard/Historique'>Historique de la serre</option>
         </select>
-        <span className="material-symbols-outlined" id="btnMenuNav">logout</span>
+        <button><span className="material-symbols-outlined" id="btnMenuNav" onClick={logout}>logout</span> </button>
       </div>
       {/* //logo, description et photo serre */}
       <div id='infoNav' >
