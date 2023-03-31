@@ -1,15 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React/* , { Component, useState }  */from "react";
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import "./Style2.css";
 import axios from "axios";
 
 /* endPoint api */
-/* const ENDPOINT = "http://localhost:2000/api/connexion" */
+const ENDPOINT = "http://localhost:5000/api/connexion"
 /* 
 const baseURL = "http:localhost:2000/api/connexion"; */
 
 const LoginForm = () => {
 
+    const navigate = useNavigate();
+
+
+  
 
     /*  */
     const {
@@ -26,45 +31,51 @@ const LoginForm = () => {
       const onSubmit = (data) => console.log(data);
 
 /* pour se connecter */
-/* 
-const connexion = (e) =>{
-    e.preventDefault();
+const connexion = (/* e */) =>{
+    /* e.preventDefault(); */
 
     const data = {
         email: document.getElementById("email").value, 
-        password: document.getElementById("mdp").value 
+        password: document.getElementById("password").value 
     }
     try{
         axios
         .post(ENDPOINT, data)
         .then(function(response){
-            alert(response.data.message)
-            console.log("check response ==> ", response);
-            setResponse(response.data.response);
+            /* vérification token */
+            if(response?.data?.token){
+                /* stockage du token dans localStorage */
+                localStorage.setItem('token', response?.data?.token)
+                /* redirection si token est bon */
+                window.location.pathname = 'Dashboard';
+            } 
+          
+          
+            
+            
         })
         .catch(function(error){
             console.log("check error  ==>", error)
 
         })
         .then(function(){
-            console.log("check executed  ==>")
+            console.log("c'est bon")
         });
     }catch(err){
         alert(err); //failed to match
     }
-} */
+} 
 
 
       /* pour se connecter */
-    /*   const [email, setEmail] = useState("");
-      const [password, setPass] = useState(""); */
+   /*    const [email, setEmail] = useState("");
+      const [password, setPass] = useState("");  */
 
-/* 
-      function connexion(e) {
+/*       function connexion(e) {
         e.preventDefault();
         let request = {
             email: document.getElementById("email").value, 
-            password: document.getElementById("mdp").value 
+            password: document.getElementById("password").value 
         }
         axios.post('http://localhost:2000/api/connexion', request)
         .then(resp => {
@@ -86,7 +97,7 @@ const connexion = (e) =>{
         });
         
 
-    } */
+    }  */
 /*  */
     return (
         <div className="body">
@@ -155,7 +166,7 @@ const connexion = (e) =>{
                     
                     </div>
 
-                    <button type="submit" className="login-btn" /* onClick={(e) =>connexion(e)} */>Connexion</button>
+                    <button type="submit" className="login-btn" onClick={(e) =>connexion(e)}>Connexion</button>
                 
                 </form>
 
