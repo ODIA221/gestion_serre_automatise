@@ -317,6 +317,15 @@ function Header() {
                                         type="password"
                                         {...register("confirmMdp", {
                                           required: "Champ Obligatoire",
+                                          
+                                          minLength: {
+                                            value: 5,
+                                            message: "5 Caractètes au minimum"
+                                          },
+                                          maxLength: {
+                                            value:10,
+                                            message: "10 Caractètes au maximum"
+                                          },
 
                                           validate: (value) => 
                                           value=== nouveauMdp || "Les mots de passe ne conrrespondent pas !",
