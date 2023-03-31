@@ -15,9 +15,13 @@ function Header() {
   const [debitdif, setDebitdif] = useState(false)
 
 
+
   const popup = () => {
-    setOpen('d-block')
+    setOpen('d-block')  
+  
   }
+  
+
   const autres = (e) => {
     if (e.target.value === "autres") {
       setAutre(true)
@@ -147,7 +151,7 @@ function Header() {
                     <option>Salade</option>
                     <option>Tomate</option>
                     <option value='autres'>Autres</option>
-                  </select>: <input type="text" placeholder='donnez une plante'/>}
+                  </select>: <input type="text" placeholder='donnez une plante' required/>}
                   
 
                   {!autre && <>
@@ -222,7 +226,22 @@ function Header() {
 
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annulé</button>
-                    <button class="butM">Modifié</button>
+{/*                     <button onClick={() => alert("Engistrement reussi!")} class="butM">Modifié</button>
+ */}                    
+                    <button type="button" class="btn btn-success" className='butM' id="liveToastBtn">Modifié</button>
+
+                          <div class="position-fixed bottom-0 end-0 p-3" style={{"z-index": 11}}/>
+                            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                              <div class="toast-header">
+                                <img src="..." class="rounded me-2" alt="..."/>
+                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                              </div>
+                              <div class="toast-body">
+                                <b>Engistrement reussi !</b>
+                              </div>
+                            </div>
+
+
                   </div>
                 </div>
               </form>
