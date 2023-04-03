@@ -91,8 +91,7 @@ router.post('/connexion', (req, res) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: 'Compte non existant !',
-          /* alert(message); */
+          message: 'Email inéxistant !',
         })
       }
       getUser = user
@@ -169,23 +168,6 @@ router.route('/profile/:id').get(authorize, (req, res, next) => {
   })
 })
 
-// Update User
-router.route('/modifier/:id').put((req, res, next) => {
-  userSchema.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: req.body,
-    },
-    (error, data) => {
-      if (error) {
-        return next(error)
-      } else {
-        res.json(data)
-        console.log('Modification réussie !')
-      }
-    },
-  )
-})
 
 
 module.exports = router
