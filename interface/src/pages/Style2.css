@@ -300,3 +300,16 @@ h1.label
   .labelRfid{
     color: white;
   }
+  #errServer{
+    background-color: rgb(250, 191, 191);
+    border: none;
+    width: 100%;
+    color: black;
+    border-radius: 7px;
+    text-align: center;
+  }
+  #setTime{
+    color: white;
+    align-items: center;
+    animation: alternate;
+  }
