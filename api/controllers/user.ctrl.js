@@ -33,9 +33,10 @@ router.post('/ajouter',  (req, res, next) => {
   },
 )
 //modif mdp
+//modif mdp
 router.patch('/modifierMdp/:id', async(req, res) => {
   try {
-        let { actuelMdp, nouveauMdp } = req.body;
+        let { mdpActuel, mdpNouveau } = req.body;
         const id = req.params.id;
         const updatedData = req.body;
         const options = { new: true };
@@ -43,31 +44,27 @@ router.patch('/modifierMdp/:id', async(req, res) => {
         if(!user){
           return res.status(404);
         };
-        if (updatedData.actuelMdp){
+      
           user.then(async(e)=> {
+           /*  console.log(mdpActuel); */
+            const testPassword = await bcrypt.compare(mdpActuel, e.password)
 
-                if(await bcrypt.compare(actuelMdp, e.password)){
-                    const hash = await bcrypt.hash(nouveauMdp, 10);
-                      updatedData.password = hash;
+                if(testPassword){
+                    const hash = await bcrypt.hash(mdpNouveau, 10);
+                      updatedData.password;
                       const result = await userSchema.findByIdAndUpdate(
-                      id, updatedData, options
+                      id, {password:hash}, options
                       );
                     return res.send(result);
                 }
-                return res.send('Corres non trouvé');
+                return res.send(' Mdp actuel incorrect');/* no corres */
           });
-
-      }else{
-        const result = await userSchema.findByIdAndUpdate(
-              id, updatedData, options
-          )
-          return res.send(result)
-      }
   }
   catch (error) {
-    return res.status(400).json({ message: error.message })
+      res.status(400).json({ message: error.message })
   }
 })
+
 
 // Connexion
 router.post('/connexion', (req, res) => {
