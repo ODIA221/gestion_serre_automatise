@@ -7,7 +7,8 @@ import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
 import  ProtectRoute  from './pages/ProtectRoute';
 import  ParametrePlante  from './pages/ParametrePlante';
-import Auth from "./pages/Auth";
+/* import  ModifierMdp  from "./pages/ModifierMdp"; */
+/* import Auth from "./pages/Auth"; */
 
 
 function App() {
@@ -22,8 +23,8 @@ function App() {
         <Route path='ParametrePlante' element={<ParametrePlante />}/>
         <Route path='TableauDB' element={<TableauDB />}/>
         <Route path='ProtectRoute' element={<ProtectRoute/>}/>
-        {/* <Route path='Dashboard/TableauDB' element={""}/> */}
-        {/* <Route path="*" element={<LoginForm/>} /> */}
+{/*         <Route path='mdp' element={<ModifierMdp/>}/>
+        <Route path="*" element={<h1>Erreur 404</h1>} /> */}
     </Routes>
     </>
   </div>
