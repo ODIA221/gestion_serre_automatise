@@ -29,7 +29,7 @@ app.use(
 
 
 const url = mongoose  /* mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1 */
-  .connect("mongodb+srv://mariecherif:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutomatise ")/*  */
+  .connect("mongodb+srv://mariecherif:Marie12@cluster0.qn40ttt.mongodb.net/?retryWrites=true&w=majority/serreAutomatise")/*  */
   .then((x) => {
     console.log(`Vous êtes connecté à la base de donnée : "${x.connections[0].name}"`)
   })
