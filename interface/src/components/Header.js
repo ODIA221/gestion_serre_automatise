@@ -142,8 +142,8 @@ function Header() {
         </span>
       </div>
 
-      {/*     parametrage plante
- */}      <div className={`modal ${open}`} tabindex="-1">
+      {/*     parametrage plante*/}      
+      <div className={`modal ${open}`} tabindex="-1">
         <div className="modal-dialog modal-dialog-centered">
           <div id='modalparam' className="modal-content">
             <div className="modal-header d-flex justify-content-center">

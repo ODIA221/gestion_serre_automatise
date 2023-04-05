@@ -8,6 +8,7 @@ import  TableauDB  from './pages/TableauDB';
 import  ProtectRoute  from './pages/ProtectRoute';
 import  ParametrePlante  from './pages/ParametrePlante';
 import Auth from "./pages/Auth";
+import Header from "./components/Header";
 
 
 function App() {

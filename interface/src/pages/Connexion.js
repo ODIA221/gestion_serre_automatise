@@ -11,7 +11,7 @@ const ENDPOINT = "http://localhost:5000/api/connexion";
 const LoginForm = () => {
     /* const [isLoading, setIsLoading] =useState(true); */
     const [error, setErrror] =useState(null);
-    const [login, setLogin] =useState(null);
+    /* const [login, setLogin] =useState(null); */
 
     /*  hooks-form*/
     const {
@@ -45,7 +45,7 @@ const connexion = () =>{
                 }
             })
             .then(data =>{
-                setLogin(data)
+                /* setLogin(data) */
                /*  setIsLoading(true) */
                 setErrror (null)
                 
@@ -74,10 +74,6 @@ const connexion = () =>{
             {/* div form connexion*/}
                 <form className="corp1" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion</h1>
-                     {/* timeOute */}
-                    {/* <div id="setTime">
-                        {isLoading && <div> En chargement ....</div>}
-                    </div> */}
                     <div>
                     {/* Affichage des message du server */}
                     <div id="errServer">
