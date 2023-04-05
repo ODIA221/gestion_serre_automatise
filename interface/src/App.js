@@ -1,5 +1,5 @@
 /* import Axios from "axios" */
-import React from "react";
+import React, { useEffect} from "react";
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
@@ -11,6 +11,35 @@ import Auth from "./pages/Auth";
 
 
 function App() {
+
+  /*connecter api*/
+      /* connect to api */
+     // const  [data , setData] = useState("");
+
+      useEffect(() => {
+          try{
+              axios
+              .post(ENDPOINT)
+              .then(function(response){
+                  console.log("check response ==> ", response);
+                  /* setData(response.data.response); */
+              })
+              .catch(function(error){
+                  console.log("check error  ==>", error)
+  
+              })
+              .then(function(){
+                  console.log("check executed  ==>")
+              });
+          }catch(err){
+              alert(err); //failed to match
+          }
+      }, []);
+   
+
+
+
+
 
   return (
   <div className='pages'>

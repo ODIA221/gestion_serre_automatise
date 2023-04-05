@@ -2,6 +2,7 @@ import React, { useState }from "react";
 import { useForm } from "react-hook-form";
 import "./Style2.css";
 import axios from "axios";
+import  io from 'socket.io-client';
 
 
 /* endPoint api */
@@ -20,7 +21,24 @@ const LoginForm = () => {
         handleSubmit,
       } = useForm(
         {mode:"onChange"}
-      );    
+      );
+
+  //FRID
+//  const  arduino = () => {
+//     console.log('socket service');
+
+//  return this.socket.fromEvent('rfid')
+//   }
+const socket = io('ws://localhost:5000');
+socket.on('rfid', (data) => {
+    console.log(data);
+   
+        localStorage.setItem('token', data)
+        window.location.pathname = 'Dashboard/TableauDB';   
+    
+})
+        
+      
       /*  */
       const onSubmit = (data) => console.log("");
 /* pour se connecter */

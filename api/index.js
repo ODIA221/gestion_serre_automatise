@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.set('strictQuery', true);
+const jwt = require('jsonwebtoken')
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
@@ -38,6 +38,10 @@ app.use(
 
 
 
+
+
+
+  
 // Serve static resources
 app.use('/api', api)
 
@@ -47,7 +51,8 @@ app.get('/favicon.ico', (req, res) => res.status(204))
 // Define PORT
 const port = process.env.PORT || 5000
 
-const servers = app.listen(port, () => {
+const servers = require('http').createServer(app)
+ servers.listen(port, () => {
   console.log('Écoute sur le port : ' + port)
 })
 
@@ -64,6 +69,59 @@ app.use(function (err, req, res, next) {
   res.status(err.statusCode).send(err.message)
 
 })
+
+
+////////////////////// 2 Socket //////////////
+
+
+io = require('socket.io')(servers,
+  {
+      cors:
+      {
+          origin: "*",
+          methods: ["PUT", "GET", "POST", "DELETE", "OPTIONS"],
+          credentials: false
+      }
+  });
+
+  const SerialPort = require('serialport');
+  const port2 = new SerialPort('/dev/ttyUSB0', { baudRate: 115200} )
+  const { ReadlineParser } = require('@serialport/parser-readline');
+  const parser = port2.pipe(new ReadlineParser({ delimiter: '\r\n' }))
+
+
+  let CodeRFID
+  parser.on("data", (data) => {
+    // console.log(data);
+    let tempon = data.split('/')
+     CodeRFID = tempon[0]
+
+     if(CodeRFID === '21116612546'){
+      let jwtToken = jwt.sign(
+        {
+          
+          CodeRFID: '21116612546',
+        },
+        'token-pour-se-connecter',
+        {
+          expiresIn: '1h',
+        },
+      )
+      io.emit('rfid',jwtToken);
+      console.log(jwtToken);
+     }
+     console.log(CodeRFID);
+     
+  });
+   
+   
+
+    
+
+  
+
+ 
+
 
 
 
