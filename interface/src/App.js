@@ -1,5 +1,5 @@
 /* import Axios from "axios" */
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
@@ -17,7 +17,7 @@ function App() {
 
   /*connecter api*/
       /* connect to api */
-      const  [data , setData] = useState("");
+     // const  [data , setData] = useState("");
 
       useEffect(() => {
           try{
@@ -49,6 +49,7 @@ function App() {
     <Routes>
 
         <Route index path="/" element={<LoginForm/>} />
+
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
