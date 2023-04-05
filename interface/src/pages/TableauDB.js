@@ -10,9 +10,22 @@ import toitO from '../images/toitO.png'
 import toitF from '../images/toitF.png'
 import nonArrosage from '../images/nonArrosage.png'
 import arrosage from '../images/arrosage.gif'
+import  io from 'socket.io-client';
+
 const TableauDB = () => {
 
-  
+/* const socket = io('ws://localhost:5000');
+
+  const Arrosage = ()=>{
+    socket.emit('arrosage', '1');
+    
+    setEtatArrosage(arrosage);
+
+  } */
+ 
+    
+
+
   let porte = "Ouvert" 
   let extracteur = "Éteint"
   let insectes = "Absent"

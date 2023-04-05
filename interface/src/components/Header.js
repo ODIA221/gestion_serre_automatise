@@ -6,6 +6,8 @@ import salade from '../images/salade.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
+import  io from 'socket.io-client';
+
 /* import Auth from "../pages/Auth"; */
 
 
@@ -15,6 +17,11 @@ function Header() {
   const [autre, setAutre] = useState(false)
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
+  const [humsol, setHumSol] = useState(0)
+  const [lum, setLum] = useState(0)
+  const [temp, setTemp] = useState(0)
+  const [hum, setHum] = useState(0)
+
 
       // fonction de  déconnexion
         let logout = () => {
@@ -58,8 +65,21 @@ function Header() {
 
 
 
+  const socket = io('ws://localhost:5000');
+  socket.on('data', (data) => {
+    setHumSol(data.humsol)
+      
+  })
+  socket.on('data', (data) =>{
+    setLum(data.lum)
+  })
+  socket.on('data', (data) =>{
+    setTemp(data.temp)
+  })
+  socket.on('data', (data) =>{
+    setHum(data.hum)
+  })
 
-  
 
   /*--------Déclarations fonction pour Popup modicfication Mot de passe --------*/
 
@@ -128,16 +148,16 @@ function Header() {
         <span id="containerVTRTempérature">
           <span id="SouscontainerVTRTempérature">
             <b>Température</b>
-            <br /> 28°C
+            <br /> {temp}°C
           </span>
           <span id="SouscontainerVTRTempérature">
             <b>Humidité</b>
-            <br />Sol : 41%
-            <br />Serre : 67%
+            <br />Sol : {humsol} %
+            <br />Serre : {hum}%
           </span>
           <span id="SouscontainerVTRTempérature">
             <b>Luminosité</b>
-            <br /> 80 lux
+            <br /> {lum} lux
           </span>
         </span>
       </div>
