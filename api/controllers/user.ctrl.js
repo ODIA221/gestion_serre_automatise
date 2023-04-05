@@ -4,7 +4,16 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
 const authorize = require('../authentification/auth')
+const serverData = require('../index')
 mongoose = require('mongoose')
+mongoose.set('strictQuery', true);
+// const a = serverData.CodeRFID 
+//  console.log(a);
+
+
+
+
+ 
 
 // Inscription
 router.post('/ajouter',  (req, res, next) => {
@@ -69,7 +78,15 @@ router.patch('/modifierMdp/:id', async(req, res) => {
   }
 })
 
+
 // Connexion
+
+
+
+
+
+
+
 router.post('/connexion', (req, res) => {
 
   res.header({
@@ -131,6 +148,12 @@ router.post('/connexion', (req, res) => {
         
       })
     })
+
+
+
+
+
+    
 })
 
 // Recuperez tous les utilisateurs
