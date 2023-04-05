@@ -343,12 +343,8 @@ function Header() {
                                           required: "Champ Obligatoire",
                                           
                                           minLength: {
-                                            value: 5,
-                                            message: "5 Caractètes au minimum"
-                                          },
-                                          maxLength: {
-                                            value:10,
-                                            message: "10 Caractètes au maximum"
+                                            value: 1,
+                                            message: ""
                                           },
 
                                           validate: (value) => 

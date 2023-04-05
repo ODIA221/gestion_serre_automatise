@@ -130,6 +130,12 @@ router.post('/connexion', (req, res) => {
     })
 })
 
+
+/* cconnexion avec rfid */
+
+
+
+
 // Recuperez tous les utilisateurs
 router.route('/').get((req, res, next) => {
   userSchema.find((error, response)=> {
