@@ -1,7 +1,9 @@
 import React from 'react'
 
-export default function ProtectRoute() {
+function ProtectRoute() {
   return (
-    <div> Route inavlide</div>
+    <div>Route invadite</div>
   )
 }
+
+export default ProtectRoute
