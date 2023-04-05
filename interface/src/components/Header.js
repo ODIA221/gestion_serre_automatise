@@ -76,6 +76,7 @@ function Header() {
     /*  fonction (onsbmit) Modification mot de passe */
     const [mdpActuel, setMdpActuel] = useState("");
     const [mdpNouveau, setMdpNouveau] = useState("");
+    const [mdpConfirm, setMdpConfirm] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState(false);
     const onSubmit  =  async (data) => {
@@ -105,7 +106,7 @@ function Header() {
     const [popupMdp,setPop]=useState(false);
 
     /* recupérer input  Mdp entrer  */
-    const nouveauMdp = watch ('nouveauMdp');
+    const nouveauMdp = watch ('mdpNouveau');
  
     /* fonction afficher popup */
     const handleClickOpen=()=>{
@@ -378,7 +379,7 @@ function Header() {
                                         className="mdpInput"
                                         placeholder="..."
                                         type="password"
-                                        {...register("confirmMdp", {
+                                        {...register("mdpConfirm", {
                                           required: "Champ Obligatoire",
                                           
                                           minLength: {
@@ -386,16 +387,12 @@ function Header() {
                                             message: ""
                                           },
 
-                                         /*  validate: (value) => 
-                                          value=== mdpNouveau || "Les mots de passe ne conrrespondent pas !", */
-                                          
-                                          
+                                          validate: (value) => 
+                                          value === nouveauMdp || "Les mots de passe ne conrrespondent pas !",
                                       })}
                                     />
                                     {/* Message d'erreurs */}
-                                    {errors.confirmMdp && <small className='err'>{errors.confirmMdp.message }</small>}
-                                    {/* Affichage des message du server */}
-                                    {error && <div>{error}</div>}
+                                    {errors.mdpConfirm && <small className='err'>{errors.mdpConfirm.message }</small>}
                                 </div>
                             <div className="mdpBtn">
                                 <button onClick={closePopup} className=" btnAnnuler">Annuler</button>
