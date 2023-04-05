@@ -22,6 +22,7 @@ function App() {
             <Route path='ParametrePlante' element={<ParametrePlante />}/>
             <Route path='TableauDB' element={<TableauDB />}/>
             {/* <Route path='ChangePW' element='ChangePW'/> */}
+            <Route path='Paramettre' element={<Paramettre />} />
 
         </Route>
         <Route  path='/*'> Page introuvable</Route>

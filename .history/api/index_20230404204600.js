@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.set('strictQuery', true);
+
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
@@ -45,7 +45,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 4000
 
 const servers = app.listen(port, () => {
   console.log('Écoute sur le port : ' + port)

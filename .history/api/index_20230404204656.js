@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-mongoose.set('strictQuery', true);
+
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
