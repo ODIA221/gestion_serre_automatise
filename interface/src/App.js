@@ -12,29 +12,6 @@ import Auth from "./pages/Auth";
 
 function App() {
 
-  /*connecter api*/
-      /* connect to api */
-     // const  [data , setData] = useState("");
-
-      useEffect(() => {
-          try{
-              axios
-              .post(ENDPOINT)
-              .then(function(response){
-                  console.log("check response ==> ", response);
-                  /* setData(response.data.response); */
-              })
-              .catch(function(error){
-                  console.log("check error  ==>", error)
-  
-              })
-              .then(function(){
-                  console.log("check executed  ==>")
-              });
-          }catch(err){
-              alert(err); //failed to match
-          }
-      }, []);
    
 
 
