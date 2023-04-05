@@ -6,7 +6,7 @@ import salade from '../images/salade.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
-/* import Auth from "../pages/Auth"; */
+import axios from 'axios'
 
 
 function Header() {
@@ -73,8 +73,33 @@ function Header() {
         {mode:"onChange"}
       );
 
-    /* déclaration onSubmit */
-    const onSubmit  = (data) => console.log (data);
+    /*  fonction (onsbmit) Modification mot de passe */
+    const [mdpActuel, setMdpActuel] = useState("");
+    const [mdpNouveau, setMdpNouveau] = useState("");
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState(false);
+    const onSubmit  =  async (data) => {
+
+      console.log ();
+
+
+        try {
+          const response = await axios.patch(`http://localhost:5000/api//modifierMdp/${localStorage.getItem("id")}`, {
+            mdpActuel: data.mdpActuel,
+            mdpNouveau: data.mdpNouveau,
+          })
+          console.log(response.data);
+          setSuccess(true);
+          
+        } catch (error) {
+          setError(error.response.data.message);
+        }
+    };
+
+
+    /* Fin modification mot de passse */
+    
+    
 
     /* hooks popup */
     const [popupMdp,setPop]=useState(false);
@@ -279,6 +304,16 @@ function Header() {
                         <div className="popup-header">      
                         </div> 
                         <form  onSubmit={handleSubmit(onSubmit)}>
+                          {/* afficher un message d'erreur s'il y en a un */}
+                          {error && <p style={{ color: "red" }}>{error}</p>}
+                          {/*  */}
+                          {/* afficher un message de succès si la modification s'est bien déroulée */}
+                            {success && (
+                              <div style={{ backgroundColor: "green", color: "white", padding: "10px" }}>
+                                Votre mot de passe a été modifié avec succès !
+                              </div>
+                            )}
+                                {/*  */}
                                 <div>
                                     <label className="mdpLabel">Actuel Mot de Passe</label>
                                 </div>
@@ -288,7 +323,9 @@ function Header() {
                                         placeholder="..."
                                         name="mdp1"
                                         type="password"
-                                        {...register("actuelMdp", {
+                                        defaultValue={mdpActuel}
+                                        onChange={(e) => setMdpActuel(e.target.value)}
+                                        {...register("mdpActuel", {
                                             required: "Champ Obligatoire",
                                             
                                             minLength: {
@@ -304,7 +341,7 @@ function Header() {
                                         })}
                                     />
                                     {/* Message d'erreurs */}
-                                    {errors.actuelMdp && <small className='err'>{errors.actuelMdp.message }</small>}
+                                    {errors.mdpActuel && <small className='err'>{errors.mdpActuel.message }</small>}
                                 </div>  
                                 <div>
                                     <div>
@@ -314,7 +351,9 @@ function Header() {
                                         className="mdpInput"
                                         type="password"
                                         placeholder="..."
-                                        {...register("nouveauMdp", {
+                                        defaultValue={mdpNouveau}
+                                        onChange={(e) => setMdpNouveau(e.target.value)}
+                                        {...register("mdpNouveau", {
                                           required: "Champ Obligatoire",
                                           
                                           minLength: {
@@ -329,7 +368,7 @@ function Header() {
                                           
                                       })}
                                     />{/* Message d'erreurs */}
-                                    {errors.nouveauMdp && <small className='err'>{errors.nouveauMdp.message }</small>}
+                                    {errors.mdpNouveau && <small className='err'>{errors.mdpNouveau.message }</small>}
                                 </div>
                                 <div>
                                     <label className="mdpLabel">Confirmation Mot de Passe</label>
@@ -347,14 +386,16 @@ function Header() {
                                             message: ""
                                           },
 
-                                          validate: (value) => 
-                                          value=== nouveauMdp || "Les mots de passe ne conrrespondent pas !",
+                                         /*  validate: (value) => 
+                                          value=== mdpNouveau || "Les mots de passe ne conrrespondent pas !", */
                                           
                                           
                                       })}
                                     />
                                     {/* Message d'erreurs */}
                                     {errors.confirmMdp && <small className='err'>{errors.confirmMdp.message }</small>}
+                                    {/* Affichage des message du server */}
+                                    {error && <div>{error}</div>}
                                 </div>
                             <div className="mdpBtn">
                                 <button onClick={closePopup} className=" btnAnnuler">Annuler</button>

@@ -39,8 +39,9 @@ const connexion = () =>{
                 if(response?.data?.token){
                     /* stockage du token dans localStorage */
                     localStorage.setItem('token', response?.data?.token)
+                    localStorage.setItem('id', response?.data?._id)
                     /* redirection si token est bon */
-                    window.location.pathname = 'Dashboard';
+                    window.location.pathname = '/Dashboard/TableauDB';
                     
                 }
             })
@@ -51,7 +52,7 @@ const connexion = () =>{
                 
             })
             .catch(error =>{
-                console.log(error)
+                /* console.log(error) */
                 setErrror (error.message)
                /*  setIsLoading(false) */
                 // Erreur de la requête
