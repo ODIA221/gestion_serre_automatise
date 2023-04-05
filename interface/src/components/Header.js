@@ -76,8 +76,8 @@ function Header() {
     /*  fonction (onsbmit) Modification mot de passe */
     const [mdpActuel, setMdpActuel] = useState("");
     const [mdpNouveau, setMdpNouveau] = useState("");
-    const [mdpConfirm, setMdpConfirm] = useState("");
-    const [error, setError] = useState("");
+    /* const [mdpConfirm, setMdpConfirm] = useState(""); */
+    const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
     const onSubmit  =  async (data) => {
 
@@ -89,11 +89,27 @@ function Header() {
             mdpActuel: data.mdpActuel,
             mdpNouveau: data.mdpNouveau,
           })
+          //console.log(response.data.split(' ').join('') =="Mdp actuel incorrect");
+          if(!response?.data._id){
+              setError(true);
+              setTimeout(() => {
+              setError(false);
+                
+              }, 2000);
+          }else{
+
+            setSuccess(true);
+            setTimeout(() => {
+              setSuccess(false);
+                
+              }, 2000);
+          }
           console.log(response.data);
-          setSuccess(true);
+
           
         } catch (error) {
-          setError(error.response.data.message);
+          // setError(error.response.data.message);
+          console.log(error);
         }
     };
 
@@ -306,7 +322,7 @@ function Header() {
                         </div> 
                         <form  onSubmit={handleSubmit(onSubmit)}>
                           {/* afficher un message d'erreur s'il y en a un */}
-                          {error && <p style={{ color: "red" }}>{error}</p>}
+                          {error && <p style={{ color: "red" }}>tttttt</p>}
                           {/*  */}
                           {/* afficher un message de succès si la modification s'est bien déroulée */}
                             {success && (
