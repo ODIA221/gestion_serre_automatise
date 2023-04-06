@@ -87,7 +87,7 @@ function Header() {
   }
   useEffect(() => {
 /*      if (heure === "16" && minute === "24" && seconde === "00") {
- */       fetch("http://localhost:5000/api/envoi", {
+ */        fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -109,14 +109,14 @@ function Header() {
             //window.location.reload();
           });
      /*  } */
-    }, [seconde]);
+    }, [minute]);
 
   setInterval(() => repeter(), 1000);
 
   const repeter = () => {
 
 
-    let currentDate = new Date().getFullYear()+ '-0' +(parseInt(String(new Date().getMonth())) +1) + '- 0'+new Date().getDate() 
+    let currentDate = new Date().getFullYear()+ '-0' +(parseInt(String(new Date().getMonth())) +1) + '-0"+new Date().getDate() 
 
 
     let date = new Date();
@@ -143,7 +143,7 @@ function Header() {
     setMois(moisStr);
     setJour(jourStr);
 
-    setPeriode(currentDate.toString())
+    setPeriode(currentDate)
 
 
   };

@@ -109,7 +109,7 @@ function Header() {
             //window.location.reload();
           });
      /*  } */
-    }, [seconde]);
+    }, [sec]);
 
   setInterval(() => repeter(), 1000);
 

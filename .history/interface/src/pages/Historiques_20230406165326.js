@@ -16,7 +16,7 @@ function Historiques() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(Array(res));
+        console.log(Array(res);
         setData(res)
       });
   }, []);

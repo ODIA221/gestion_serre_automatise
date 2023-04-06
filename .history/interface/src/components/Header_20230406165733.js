@@ -109,7 +109,7 @@ function Header() {
             //window.location.reload();
           });
      /*  } */
-    }, [seconde]);
+    }, [minute]);
 
   setInterval(() => repeter(), 1000);
 
@@ -143,7 +143,7 @@ function Header() {
     setMois(moisStr);
     setJour(jourStr);
 
-    setPeriode(currentDate.toString())
+    setPeriode(currentDate.to)
 
 
   };

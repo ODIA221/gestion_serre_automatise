@@ -87,7 +87,7 @@ function Header() {
   }
   useEffect(() => {
 /*      if (heure === "16" && minute === "24" && seconde === "00") {
- */       fetch("http://localhost:5000/api/envoi", {
+ */        fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -109,7 +109,7 @@ function Header() {
             //window.location.reload();
           });
      /*  } */
-    }, [seconde]);
+    }, [minute]);
 
   setInterval(() => repeter(), 1000);
 
@@ -143,7 +143,7 @@ function Header() {
     setMois(moisStr);
     setJour(jourStr);
 
-    setPeriode(currentDate.toString())
+    setPeriode(currentDate)
 
 
   };
