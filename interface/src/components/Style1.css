@@ -225,3 +225,21 @@ border-radius: 10px;
   font-weight: bold;
   color: #e64646;
 }
+#errMdp{
+  text-align: center;
+  width: 100%;
+  height: 28px;
+  background-color: #e64646;
+  color:white;
+  font-size:20px ;
+  font-weight: bold;
+}
+#successMdp{
+  text-align: center;
+  width: 100%;
+  height: 28px;
+  background-color: green;
+  color:white;
+  font-size:20px ;
+  font-weight: bold;
+}

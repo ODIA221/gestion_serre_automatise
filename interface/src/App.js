@@ -5,9 +5,9 @@ import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
 import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
-/* import  ProtectRoute  from './pages/ProtectRoute'; */
 import  ParametrePlante  from './pages/ParametrePlante';
 /* import Auth from "./pages/Auth"; */
+
 
 
 function App() {
@@ -25,12 +25,12 @@ function App() {
         <Route index path="/" element={<LoginForm/>} />
         <Route path='/Dashboard' element={<Dashboard/>}>
             <Route path='Historique'  element={<Historiques/>}/>
-            <Route path='ParametrePlante' element={<ParametrePlante />}/>
+            <Route PrivateRoute exact path='ParametrePlante' element={<ParametrePlante />}/>
             <Route path='TableauDB' element={<TableauDB />}/>
-            {/* <Route path='ChangePW' element='ChangePW'/> */}
+
 
         </Route>
-        <Route  path='/*'> Page introuvable</Route>
+        <Route  path='*'> Page introuvable</Route>
     </Routes>
     </>
   </div>
