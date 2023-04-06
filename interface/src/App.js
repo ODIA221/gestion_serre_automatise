@@ -17,14 +17,14 @@ function App() {
     <>
     <Routes>
         <Route index path="/" element={<LoginForm/>} />
-        <Route path='/Dashboard' element={<Auth><Dashboard/></Auth>}>
-            <Route path='Historique'  element={<Auth><Historiques/></Auth>}/>
-            <Route PrivateRoute exact path='ParametrePlante' element={<Auth><ParametrePlante /></Auth>}/>
-            <Route path='TableauDB' element={<Auth><TableauDB /></Auth>}/>
+        <Route path='/Dashboard' element={<Dashboard/>}>
+            <Route path='Historique'  element={<Historiques/>}/>
+            <Route PrivateRoute exact path='ParametrePlante' element={<ParametrePlante />}/>
+            <Route path='TableauDB' element={<TableauDB />}/>
 
 
         </Route>
-        <Route  path='/*'> Page introuvable</Route>
+        <Route  path='*'> Page introuvable</Route>
     </Routes>
     </>
   </div>
