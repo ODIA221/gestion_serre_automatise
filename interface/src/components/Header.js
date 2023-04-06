@@ -93,16 +93,19 @@ function Header() {
           if(!response?.data._id){
               setError(true);
               setTimeout(() => {
-              setError(false);
-                
-              }, 2000);
+                setError(false);        
+                document.getElementById("mdp1").value = "";
+                document.getElementById("mdp2").value = "";
+                document.getElementById("mdp3").value = "";
+              }, 3000);
           }else{
 
             setSuccess(true);
             setTimeout(() => {
-              setSuccess(false);
+              window.location.pathname = '/Dashboard/TableauDB';
+              /* setSuccess(false); */
                 
-              }, 2000);
+              }, 3000);
           }
           console.log(response.data);
 
@@ -322,11 +325,11 @@ function Header() {
                         </div> 
                         <form  onSubmit={handleSubmit(onSubmit)}>
                           {/* afficher un message d'erreur s'il y en a un */}
-                          {error && <p style={{ color: "red" }}>tttttt</p>}
+                          {error && <p id='errMdp'>Votre mot de passe actuel est incorrect ! </p>}
                           {/*  */}
                           {/* afficher un message de succès si la modification s'est bien déroulée */}
                             {success && (
-                              <div style={{ backgroundColor: "green", color: "white", padding: "10px" }}>
+                              <div id='successMdp'>
                                 Votre mot de passe a été modifié avec succès !
                               </div>
                             )}
@@ -338,7 +341,7 @@ function Header() {
                                     <input 
                                         className="mdpInput"
                                         placeholder="..."
-                                        name="mdp1"
+                                        id='mdp1'
                                         type="password"
                                         defaultValue={mdpActuel}
                                         onChange={(e) => setMdpActuel(e.target.value)}
@@ -367,6 +370,7 @@ function Header() {
                                     <input 
                                         className="mdpInput"
                                         type="password"
+                                        id='mdp2'
                                         placeholder="..."
                                         defaultValue={mdpNouveau}
                                         onChange={(e) => setMdpNouveau(e.target.value)}
@@ -395,6 +399,7 @@ function Header() {
                                         className="mdpInput"
                                         placeholder="..."
                                         type="password"
+                                        id='mdp3'
                                         {...register("mdpConfirm", {
                                           required: "Champ Obligatoire",
                                           
