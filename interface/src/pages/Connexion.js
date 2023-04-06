@@ -12,7 +12,7 @@ const ENDPOINT = "http://localhost:5000/api/connexion";
 const LoginForm = () => {
     /* const [isLoading, setIsLoading] =useState(true); */
     const [error, setErrror] =useState(null);
-    const [login, setLogin] =useState(null);
+    /* const [login, setLogin] =useState(null); */
 
     /*  hooks-form*/
     const {
@@ -57,19 +57,20 @@ const connexion = () =>{
                 if(response?.data?.token){
                     /* stockage du token dans localStorage */
                     localStorage.setItem('token', response?.data?.token)
+                    localStorage.setItem('id', response?.data?._id)
                     /* redirection si token est bon */
-                    window.location.pathname = 'Dashboard';
+                    window.location.pathname = '/Dashboard/TableauDB';
                     
                 }
             })
             .then(data =>{
-                setLogin(data)
+                /* setLogin(data) */
                /*  setIsLoading(true) */
                 setErrror (null)
                 
             })
             .catch(error =>{
-                console.log(error)
+                /* console.log(error) */
                 setErrror (error.message)
                /*  setIsLoading(false) */
                 // Erreur de la requête
@@ -92,10 +93,6 @@ const connexion = () =>{
             {/* div form connexion*/}
                 <form className="corp1" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion</h1>
-                     {/* timeOute */}
-                    {/* <div id="setTime">
-                        {isLoading && <div> En chargement ....</div>}
-                    </div> */}
                     <div>
                     {/* Affichage des message du server */}
                     <div id="errServer">
