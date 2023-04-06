@@ -101,6 +101,9 @@ function Header() {
           }else{
 
             setSuccess(true);
+            document.getElementById("mdp1").value = "";
+            document.getElementById("mdp2").value = "";
+            document.getElementById("mdp3").value = "";
             setTimeout(() => {
               window.location.pathname = '/Dashboard/TableauDB';
               /* setSuccess(false); */
@@ -156,7 +159,7 @@ function Header() {
           <option value='/Dashboard/ParametrePlante' >Historique des plantes</option>
           <option value='/Dashboard/Historique'>Historique de la serre</option>
         </select>
-        <button><span className="material-symbols-outlined" id="btnMenuNav" onClick={logout}>logout</span> </button>
+        <button  id="btnMenuNav"><span className="material-symbols-outlined" onClick={logout}>logout</span> </button>
       </div>
       {/* //logo, description et photo serre */}
       <div id='infoNav' >
