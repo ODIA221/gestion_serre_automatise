@@ -1,0 +1,78 @@
+#include <Servo.h>
+#include <DHT.h>
+
+#define DHTPIN 2   
+#define DHTTYPE  DHT11
+
+DHT dht(DHTPIN, DHTTYPE);
+
+int digitalPin = 4; // pour le relais
+int analogPin = A0; // pour le capteur de l'humidité du sol
+int digitalVal; // digital readings
+int analogVal; //analog readings
+
+  Servo myservo;
+const int ldr = 0; //ldr au pin analog 0
+int valLdr = 0; // valeur de la resistance de la ldr entre 0 et 1024
+int maxi = 1020;
+int mini = 0;
+int pourcentage;
+void setup()
+{
+pinMode(digitalPin, OUTPUT);
+digitalWrite(digitalPin, LOW);
+Serial.begin(9600);
+pinMode(ldr, INPUT);
+dht.begin(); 
+
+}
+void loop()
+{
+
+int humidite = dht.readHumidity();
+int temperature = dht.readTemperature();
+
+analogVal = analogRead(analogPin);//lire la valeur retournée par le capteur de l'humidité
+pourcentage = map(analogVal,maxi,mini,0,100);
+valLdr = analogRead(ldr);
+
+
+if (pourcentage<50){//si la capteur de l'humidité retourne une valeur<500
+digitalWrite(digitalPin, HIGH);//La pompe à eau arrose la plante
+//Serial.println("Le sol est trop sec ,il est temps d'arroser!");
+
+//delay(100);
+} else { // sinon
+digitalWrite(digitalPin, LOW);//La //La pompe à eau arrête l'arrosage
+ //Serial.println(" L'humidité du sol est parfaite");
+
+}
+
+
+  if (valLdr >500) //mettre ici la valeur d'obscurité téstée, entre 0 et 1024
+  {
+  myservo.attach(9); //myservo est sur le pin 9 de l'arduino
+    myservo.writeMicroseconds(1700); //recul...
+   // Serial.print(valLdr );
+
+  //  delay(1020); //...pendant 1.02 secondes
+   // myservo.detach(); //detach myservo
+  }
+  else 
+{
+ // myservo.attach(9); //myservo est sur le pin 9 de l'arduino
+   // myservo.writeMicroseconds(1300); // avance...
+   // delay(1020); //...pendant 1.02 secondes
+    myservo.detach();
+  }
+  Serial.print(valLdr);
+  Serial.print("/");
+  Serial.print(pourcentage);
+  Serial.print("/");
+  Serial.print(temperature);  
+  Serial.print("/");   
+  Serial.println(humidite);   
+
+
+  delay(500);
+}
