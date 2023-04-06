@@ -7,6 +7,7 @@ import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
 import  ParametrePlante  from './pages/ParametrePlante';
 import Auth from "./pages/Auth";
+import ProtectionRoutes from "./pages/ProtectionRoutes";
 
 
 
@@ -24,7 +25,8 @@ function App() {
 
 
         </Route>
-        <Route  path='/*'> Page introuvable</Route>
+        <Route path="*" element={<ProtectionRoutes />} />
+
     </Routes>
     </>
   </div>
