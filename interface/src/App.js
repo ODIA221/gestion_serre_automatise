@@ -12,6 +12,7 @@ import Auth from "./pages/Auth";
 
 function App() {
 
+  
    
 
 
@@ -23,13 +24,15 @@ function App() {
     <>
     <Routes>
         <Route index path="/" element={<LoginForm/>} />
-        <Route path='Dashboard' element={<Dashboard/>}/>
-        <Route path='Historique'  element={<Historiques/>}/>
-        <Route path='ParametrePlante' element={<ParametrePlante />}/>
-        <Route path='TableauDB' element={<TableauDB />}/>
-        <Route path='ProtectRoute' element={<ProtectRoute/>}/>
-        {/* <Route path='Dashboard/TableauDB' element={""}/> */}
-        {/* <Route path="*" element={<LoginForm/>} /> */}
+        <Route path='/Dashboard' element={<Dashboard/>}>
+            <Route path='Historique'  element={<Historiques/>}/>
+            <Route PrivateRoute exact path='ParametrePlante' element={<ParametrePlante />}/>
+            <Route path='TableauDB' element={<TableauDB />}/>
+
+            {/* <Route path='ChangePW' element='ChangePW'/> */}
+
+        </Route>
+        <Route  path='/*'> Page introuvable</Route>
     </Routes>
     </>
   </div>

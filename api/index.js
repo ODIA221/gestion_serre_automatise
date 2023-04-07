@@ -85,7 +85,7 @@ io = require('socket.io')(servers,
   });
 
   const SerialPort = require('serialport');
-  const port2 = new SerialPort('/dev/ttyUSB0', { baudRate: 115200} )
+  const port2 = new SerialPort('/dev/ttyUSB1', { baudRate: 115200} )
   const { ReadlineParser } = require('@serialport/parser-readline');
   const parser = port2.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
@@ -94,13 +94,16 @@ io = require('socket.io')(servers,
   parser.on("data", (data) => {
     // console.log(data);
     let tempon = data.split('/')
-     CodeRFID = tempon[0]
-
-     if(CodeRFID === '21116612546'){
+    let etatPorte = tempon[0]
+    let etatInsecte = tempon[1]
+    let codeRfid = tempon[2]
+     //console.log(data.CodeRFID);
+     console.log(tempon[0], '  ',tempon[1], ' ',tempon[2] );
+     if(codeRfid === '1130050397'){
       let jwtToken = jwt.sign(
         {
           
-          CodeRFID: '21116612546',
+          codeRfid: '1130050397',
         },
         'token-pour-se-connecter',
         {
@@ -108,10 +111,27 @@ io = require('socket.io')(servers,
         },
       )
       io.emit('rfid',jwtToken);
-      console.log(jwtToken);
+      //console.log(jwtToken);
+     }else {
+      
+      io.emit('rfid', 'Badge non autorisé');
      }
-     console.log(CodeRFID);
-     
+     //console.log(CodeRFID);
+
+// présence insecte
+     if(etatInsecte == 'presence_insecte'){
+      
+      io.emit('insecte', 'Present');
+     }else if (etatInsecte == 'absence_insecte') {
+   
+      io.emit('insecte', 'Absent');
+     }else if(etatPorte == 'ouverte'){
+  
+      io.emit('porte', 'ouverte')
+     }else if(etatPorte == 'fermée'){
+      
+      io.emit('porte', 'fermée')
+     }
   });
    
    
