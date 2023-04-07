@@ -14,7 +14,6 @@ import io from 'socket.io-client'
 const TableauDB = () => {
 
   
-  let porte = "Ouvert" 
   let extracteur = "Éteint"
   
   let [etatToit, setEtatToit] = useState(toitO);
