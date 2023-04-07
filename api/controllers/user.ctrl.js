@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
+const historiqueSchema = require('../models/Climat')
 const authorize = require('../authentification/auth')
 const serverData = require('../index')
 mongoose = require('mongoose')
@@ -41,7 +42,34 @@ router.post('/ajouter',  (req, res, next) => {
       })
   },
 )
-//modif mdp
+//historique serre
+router.post('/envoi',  (req, res, next) => {
+  console.log(req.body)
+
+      const historique = new historiqueSchema({
+        jour: req.body.jour,
+        temperature: req.body.temperature,
+        humsol: req.body.humsol,
+        humserre: req.body.humserre,
+        luminosite: req.body.luminosite,
+
+      })
+      historique.save()
+        .then((response) => {
+          console.log(response);
+          return res.status(201).json({
+            message: 'inssertion réussie !',
+            result: response,
+          })
+        })
+        .catch((error) => {
+          return res.status(409).json({
+          })
+          
+        })
+    })
+
+
 //modif mdp
 router.patch('/modifierMdp/:id', async(req, res) => {
   try {
@@ -73,6 +101,7 @@ router.patch('/modifierMdp/:id', async(req, res) => {
       res.status(400).json({ message: error.message })
   }
 })
+ 
 
 
 // Connexion
@@ -84,17 +113,11 @@ router.patch('/modifierMdp/:id', async(req, res) => {
 
 
 router.post('/connexion', (req, res) => {
-
   res.header({
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "*",
   })
-
-  /* return res.send({response : ""}).status(200); */
-
-
-
   let getUser
   userSchema
     .findOne({
@@ -144,18 +167,22 @@ router.post('/connexion', (req, res) => {
       })
       
     })
-
-
-
-
-
-    
 })
 
 
 /* cconnexion avec rfid */
 
+//historique
 
+router.route('/recu').get((req, res, next) => {
+  historiqueSchema.find((error, response)=> {
+    if (error) {
+      return next(error)
+    } else {
+      return res.status(200).json(response)
+    }
+  })
+})
 
 
 // Recuperez tous les utilisateurs
@@ -192,6 +219,37 @@ router.route('/profile/:id').get(authorize, (req, res, next) => {
     }
   })
 })
+
+
+// Modification mot de passe
+/* router.route('/updatepassword/:id').put(authorize, async(req, res) => {
+ */  router.patch('/modifierMdp/:id', async(req, res) => {
+
+  try {
+  const id = req.params.id;
+  const updatedData = req.body;
+  const options = { new: true };
+  const actuelMdp= updatedData.actuelMdp
+  const user =await userSchema.findById(id)
+  const comp = await bcrypt.compare(actuelMdp, user.nouveauMdp)
+ console.log(bcrypt.compare(actuelMdp, user.nouveauMdp));
+  if(!comp){
+    res.status(400).json({message: "veuillez saisir votre actuel mot de passe!"})
+    return;
+  }
+  
+      updatedData.nouveauMdp
+      const hash = await bcrypt.hash(updatedData.nouveauMdp, 10);
+      updatedData.nouveauMdp = hash;
+      
+              const result = await userSchema.findByIdAndUpdate(
+              id, updatedData, options);
+            return  res.send(result);        
+  }
+  catch (error) {
+      res.status(400).json({ message: error.message })
+  }
+  })
 
 
 

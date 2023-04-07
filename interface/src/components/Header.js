@@ -3,9 +3,12 @@ import logoOumaAgri from '../images/logo.png'
 import serre from '../images/Serre.jpeg'
 import image1 from '../images/imageBG1.png'
 import salade from '../images/salade.png'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useForm } from "react-hook-form";
+import {useForm } from "react-hook-form";
+import  io from 'socket.io-client';
+/* import { param } from '../../../api/controllers/user.ctrl'
+ */
 import axios from 'axios'
 
 
@@ -15,6 +18,37 @@ function Header() {
   const [autre, setAutre] = useState(false)
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
+  const [humsol, setHumSol] = useState(0)
+  const [lum, setLum] = useState(0)
+  const [temp, setTemp] = useState(0)
+  const [hum, setHum] = useState(0)
+  const [heure1, setHeure1] = useState('')
+  const [heure2, setHeure2] = useState('')
+  const [dure, setDure] = useState('')
+  const [Duredefaut, setDuredefaut] = useState('')
+  const [heuredefaut, setHeuredefaut] = useState('')
+  const [choix, setChoix] = useState('')
+  const [news, setNews] = useState('')
+  const [seconde, setSeconde] = useState('')
+  const [minute, setMinute] = useState('')
+  const [heure, setHeure] = useState('')
+  const [mois, setMois] = useState('')
+  const [jour, setJour] = useState('')
+  const [annee, setAnnee] = useState('')
+  const [periode, setPeriode] = useState('')
+
+
+ 
+
+
+
+
+
+
+
+  
+
+
 
       // fonction de  déconnexion
         let logout = () => {
@@ -24,13 +58,98 @@ function Header() {
 
 
 
+
   const popup = () => {
-    setOpen('d-block')  
+    setOpen('d-block') 
+     
   
   }
+  const parame = ()=>{
+    localStorage.removeItem("Heure1");
+    localStorage.removeItem("Heure2");
+    localStorage.removeItem("Duree");
+    localStorage.removeItem("Duredefaut");
+    localStorage.removeItem("heuredefaut");
+    localStorage.removeItem("choix");
+    localStorage.setItem("Heure1", heure1);
+    localStorage.setItem("Heure2", heure2);
+    localStorage.setItem("Duree", dure);
+    localStorage.setItem("Duredefaut", Duredefaut);
+    localStorage.setItem("heuredefaut", heuredefaut);
+    localStorage.setItem("choix", choix);
+    localStorage.setItem("news", news);
+
+
+    
+    navigate ('TableauDB');
+    
   
+  }
+  useEffect(() => {
+      if (heure === "11" && minute === "38" && seconde === "0") {
+      fetch("http://localhost:5000/api/envoi", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            jour: periode,
+            temperature: temp,
+            humsol:  humsol,
+            humserre: hum,
+            luminosite: lum,
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            //console.log(annee.length)
+            //window.location.reload();
+          });
+        } 
+    }, [minute]);
+
+  setInterval(() => repeter(), 1000);
+
+  const repeter = () => {
+
+
+    let currentDate = new Date().getFullYear()+ '-0' +(parseInt(String(new Date().getMonth())) +1) + '- 0'+new Date().getDate() 
+
+
+    let date = new Date();
+    let seconde = date.getSeconds();
+    let minute = date.getMinutes();
+    let heure = date.getHours();
+    let mois = date.getMonth() + 1;
+    let annee = date.getFullYear();
+    let jour = new Date().getDate() 
+    let moisStr = mois.toString()
+    let jourStr = jour.toString()
+
+    if (mois < 10) {
+      moisStr = "0"+mois;
+    }
+    if (jour < 10) {
+      jourStr = "0"+jour;
+    }
+
+    setSeconde(seconde.toString());
+    setMinute(minute.toString());
+    setHeure(heure.toString());
+    setAnnee(annee.toString());
+    setMois(moisStr);
+    setJour(jourStr);
+
+    setPeriode(currentDate.toString())
+
+
+  };
 
   const autres = (e) => {
+    setChoix(e.target.value)
     if (e.target.value === "autres") {
       setAutre(true)
       setDebit(false)
@@ -58,8 +177,21 @@ function Header() {
 
 
 
+  const socket = io('ws://localhost:5000');
+  socket.on('data', (data) => {
+    setHumSol(data.humsol)
+      
+  })
+  socket.on('data', (data) =>{
+    setLum(data.lum)
+  })
+  socket.on('data', (data) =>{
+    setTemp(data.temp)
+  })
+  socket.on('data', (data) =>{
+    setHum(data.hum)
+  })
 
-  
 
   /*--------Déclarations fonction pour Popup modicfication Mot de passe --------*/
 
@@ -180,16 +312,16 @@ function Header() {
         <span id="containerVTRTempérature">
           <span id="SouscontainerVTRTempérature">
             <b>Température</b>
-            <br /> 28°C
+            <br /> {temp}°C
           </span>
           <span id="SouscontainerVTRTempérature">
             <b>Humidité</b>
-            <br />Sol : 41%
-            <br />Serre : 67%
+            <br />Sol : {humsol} %
+            <br />Serre : {hum}%
           </span>
           <span id="SouscontainerVTRTempérature">
             <b>Luminosité</b>
-            <br /> 80 lux
+            <br /> {lum} lux
           </span>
         </span>
       </div>
@@ -206,28 +338,37 @@ function Header() {
               <form id='param'>
                 <div class='d-flex flex-column'>
                   <label class="labe1">Nom du plante</label>
-                 {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input">
-                    <option>Salade</option>
-                    <option>Tomate</option>
-                    <option value='autres'>Autres</option>
-                  </select>: <input type="text" placeholder='donnez une plante' required/>}
+                 {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input"
+                 >
+                    <option  onChange={(e) => setChoix(e.target.value)}>Salade</option>
+                    <option  onChange={(e) => setChoix(e.target.value)}>Tomate</option>
+                    <option value='autres' >Autres</option>
+                  </select>: 
+                  <input type="text" placeholder='donnez une plante' required
+                  onChange={(e) => setNews(e.target.value)}
+                  />}
                   
 
                   {!autre && <>
-                    <label class="labe2">Durée</label>
-                      <select id="swal-input1" class="swal2-input">
-                      <option>5mns</option>
-                      <option>10mns</option>
-                      <option>20mns</option>
+                    <label class="labe2">Durée en minutes</label>
+                      <select id="swal-input1" class="swal2-input"
+                      onChange={(e) => setDuredefaut (e.target.value)}
+                     >
+                      <option>2</option>
+                      <option>4</option>
+                      <option>6</option>
                     </select>
                   </>}
 
                   {!debit && !debitdif && !autre && <>
                     <label class="labe3">Heure d'arrosage</label>
-                    <select id="swal-input1" class="swal2-input">
-                      <option>08h-17h</option>
-                      <option>09h-18h</option>
-                      <option>11h-19h</option>
+                    <select id="swal-input1" class="swal2-input"
+                    onChange={(e) => setHeuredefaut (e.target.value)}
+
+                    >
+                      <option>8</option>
+                      <option>9</option>
+                      <option>11</option>
                     </select>
                   </>}
 
@@ -244,16 +385,22 @@ function Header() {
                     debit && <>
                      
                       <label class="labe2">Premiere Heure</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>8h</option>
-                        <option>10h</option>
-                        <option>12h</option>
+                      <select id="swal-input1" class="swal2-input"
+                      onChange={(e) => setHeure1 (e.target.value)}
+
+                      >
+                        <option>8</option>
+                        <option>10</option>
+                        <option>12</option>
                       </select>
                       <label class="labe2">Deuxiéme Heure</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>16h</option>
-                        <option>18h</option>
-                        <option>19H</option>
+                      <select id="swal-input1" class="swal2-input"
+                            onChange={(e) => setHeure2 (e.target.value)}
+
+                      >
+                        <option>16</option>
+                        <option>18</option>
+                        <option>19</option>
                       </select>
                     </>
                   }
@@ -261,44 +408,40 @@ function Header() {
                     debitdif && <>
                 
                       <label class="labe2">Premiere Heure</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>8h</option>
-                        <option>10h</option>
-                        <option>12h</option>
+                      <select id="swal-input1" class="swal2-input"         
+                      onChange={(e) => setHeure1 (e.target.value)}
+>
+                        <option>8</option>
+                        <option>10</option>
+                        <option>12</option>
                       </select>
 
-                      <label class="labe2">Durée</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>5mns</option>
-                        <option>10mns</option>
-                        <option>20mns</option>
+                      <label class="labe2">Durée en minutes</label>
+                      <select id="swal-input1" class="swal2-input"
+                        onChange={(e) => setDure (e.target.value)}
+
+                      >
+                      <option>2</option>
+                      <option>4</option>
+                      <option>6</option>
                       </select>
                       <label class="labe2">Deuxiéme Heure</label>
-                      <select id="swal-input1" class="swal2-input">
-                        <option>16h</option>
-                        <option>18h</option>
-                        <option>19H</option>
+                      <select id="swal-input1" class="swal2-input"
+                          onChange={(e) => setHeure2 (e.target.value)}
+
+                      >
+                        <option>16</option>
+                        <option>18</option>
+                        <option>19</option>
                       </select>
                     </>
+
                   }
 
 
                   <div class="d-flex gap-2 justify-content-center mt-5">
                     <button onClick={() => setOpen('')} class="butA">Annuler</button>                    
-                    <button type="button" class="btn btn-success" className='butM' id="liveToastBtn">Modifier</button>
-
-                          <div class="position-fixed bottom-0 end-0 p-3" style={{"z-index": 11}}/>
-                            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                              <div class="toast-header">
-                                <img src="..." class="rounded me-2" alt="..."/>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                              </div>
-                              <div class="toast-body">
-                                <b>Engistrement reussi !</b>
-                              </div>
-                            </div>
-
-
+                    <button onClick={()=>{parame()}} class="btn btn-success" className='butM'>Modifier</button>
                   </div>
                 </div>
               </form>
