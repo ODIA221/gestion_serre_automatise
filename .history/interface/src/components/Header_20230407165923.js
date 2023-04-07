@@ -75,31 +75,12 @@ function Header() {
     
   
   }
-  
+  setInterval(() => {
+    
+  }, interval);
   useEffect(() => {
-/*       if (heure === "16" && minute === "49" && seconde === "00") {
- */      fetch("http://localhost:5000/api/envoi", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({
-            jour: periode,
-            temperature: temp,
-            humsol:  humsol,
-            humserre: hum,
-            luminosite: lum,
-          }),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-           
-          });
-/*         } 
- */    }, [minute]);
+     
+    }, [seconde]);
 
   setInterval(() => repeter(), 1000);
 

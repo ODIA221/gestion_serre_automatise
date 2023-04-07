@@ -10,7 +10,7 @@ function Historiques() {
   const [end, setEnd] = useState(7);
   const [active1, setActive1] = useState(true);
   const [active2, setActive2] = useState(false);
-  const [rechercher, setRecherche] = useState("");
+  const [rechercher, setRecherche] = useState([]);
   const [cacher2, setCacher2] = useState(true);
 
 
@@ -42,9 +42,7 @@ function Historiques() {
               return _a.date === rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
 
 

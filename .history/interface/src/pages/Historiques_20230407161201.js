@@ -42,7 +42,7 @@ function Historiques() {
               return _a.date === rechercher;
             }
           }
-          return false;
+          r
           }
           )
         );

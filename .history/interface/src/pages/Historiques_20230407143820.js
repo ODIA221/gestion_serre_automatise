@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./Style2.css";
@@ -6,6 +7,7 @@ import { useEffect } from 'react'
 
 function Historiques() {
   const [donnee, setData] = useState([])
+  const [users, setUsers] = useState(null);
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(7);
   const [active1, setActive1] = useState(true);
@@ -25,8 +27,8 @@ function Historiques() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-/*         setData(res)
- */        setData(
+        setData(res)
+        setUsers(
           res.filter((_a, index) => {
             if (rechercher === "") {
               return index >= start && index < end;
@@ -38,20 +40,12 @@ function Historiques() {
 
             if (rechercher === _a.date) {
               console.log("trouver");
-              setCacher2(true); 
+              setCacher2(true); //mis à jour to be merged MHDLamine->DEV 
               return _a.date === rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
-
-
-
-      });
-
-  }, [start, end, rechercher, cacher2]);
   const fleche = () => {
     if (active1 === true) {
       setActive1(false);
@@ -66,20 +60,14 @@ function Historiques() {
       setEnd(7);
     }
   };
-  const search = (chercher) => {
-    const valeur = chercher;
-    setRecherche(valeur);
-  };
+
+
+      });
+
+  }, []);
+
   return (
     <div class= "container">
-       <input
-              onChange={(e) => search(e.target.value)}
-              type="date"
-              name="date"
-              id="date"
-             /*  max={max}
-              min="2023-01-01" */
-            />
     <table class=" table border border-dark mt-4">
       <thead>
         <tr>
@@ -94,7 +82,7 @@ function Historiques() {
  
          {
           donnee.map(h => <tr>
-            <td><b>{h.jour}</b></td>
+            <td><b>Date du {h.jour}</b></td>
             <td>{h.temperature}°C</td>
             <td>{h.humsol}%</td>
             <td>{h.humserre}%</td>

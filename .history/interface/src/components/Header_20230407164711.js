@@ -75,10 +75,9 @@ function Header() {
     
   
   }
-  
   useEffect(() => {
-/*       if (heure === "16" && minute === "49" && seconde === "00") {
- */      fetch("http://localhost:5000/api/envoi", {
+      if (heure === "16" && minute === "33" && seconde === "0") {
+      fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -98,8 +97,8 @@ function Header() {
             console.log(data);
            
           });
-/*         } 
- */    }, [minute]);
+        } 
+    }, [minute]);
 
   setInterval(() => repeter(), 1000);
 

@@ -98,8 +98,8 @@ function Header() {
             console.log(data);
            
           });
-/*         } 
- */    }, [minute]);
+        } 
+    }, [seconde]);
 
   setInterval(() => repeter(), 1000);
 

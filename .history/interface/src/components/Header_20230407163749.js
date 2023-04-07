@@ -29,11 +29,11 @@ function Header() {
   const [heuredefaut, setHeuredefaut] = useState('')
   const [choix, setChoix] = useState('')
   const [news, setNews] = useState('')
-  const [seconde, setSeconde] = useState('')
-  const [minute, setMinute] = useState('')
-  const [heure, setHeure] = useState('')
-  const [mois, setMois] = useState('')
-  const [jour, setJour] = useState('')
+/*   const [seconde, setSeconde] = useState('')
+ */  const [minute, setMinute] = useState('')
+/*   const [heure, setHeure] = useState('')
+/*  */  const [mois, setMois] = useState('')
+ */  const [jour, setJour] = useState('')
   const [annee, setAnnee] = useState('')
   const [periode, setPeriode] = useState('')
 
@@ -75,9 +75,8 @@ function Header() {
     
   
   }
-  
   useEffect(() => {
-/*       if (heure === "16" && minute === "49" && seconde === "00") {
+/*       if (heure === "16" && minute === "33" && seconde === "0") {
  */      fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
@@ -99,9 +98,9 @@ function Header() {
            
           });
 /*         } 
- */    }, [minute]);
+ */    }, [jour]);
 
-  setInterval(() => repeter(), 1000);
+  setInterval(() => repeter(), 84600);
 
   const repeter = () => {
 

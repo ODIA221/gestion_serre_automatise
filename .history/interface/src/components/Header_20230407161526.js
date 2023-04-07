@@ -40,6 +40,16 @@ function Header() {
 
  
 
+
+
+
+
+
+
+  
+
+
+
       // fonction de  déconnexion
         let logout = () => {
           localStorage.removeItem('token')
@@ -75,9 +85,8 @@ function Header() {
     
   
   }
-  
   useEffect(() => {
-/*       if (heure === "16" && minute === "49" && seconde === "00") {
+/*       if (heure === "12" && minute === "03" && seconde === "0") {
  */      fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
@@ -96,10 +105,11 @@ function Header() {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-           
+            //console.log(annee.length)
+            //window.location.reload();
           });
 /*         } 
- */    }, [minute]);
+ */    }, [jour]);
 
   setInterval(() => repeter(), 1000);
 
@@ -107,7 +117,7 @@ function Header() {
 
 
     let currentDate = new Date().getDate() 
-   + '/0' +(parseInt(String(new Date().getMonth())) +1) + '/0'+ new Date().getFullYear()
+   + '/0' +(parseInt(String(new Date().getMonth())) +1) + '/0'+new Date().getDate() 
 
 
     let date = new Date();

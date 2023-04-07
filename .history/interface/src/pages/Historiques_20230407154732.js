@@ -42,16 +42,14 @@ function Historiques() {
               return _a.date === rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
 
 
 
       });
 
-  }, [start, end, rechercher, cacher2]);
+  }, [start, end, rechercher]);
   const fleche = () => {
     if (active1 === true) {
       setActive1(false);

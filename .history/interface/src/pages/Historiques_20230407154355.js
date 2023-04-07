@@ -28,7 +28,7 @@ function Historiques() {
 /*         setData(res)
  */        setData(
           res.filter((_a, index) => {
-            if (rechercher === "") {
+            if (rechercher == "") {
               return index >= start && index < end;
             } else {
               if (rechercher !== _a.date) {
@@ -38,20 +38,18 @@ function Historiques() {
 
             if (rechercher === _a.date) {
               console.log("trouver");
-              setCacher2(true); 
+              setCacher2(true); //mis à jour to be merged MHDLamine->DEV 
               return _a.date === rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
 
 
 
       });
 
-  }, [start, end, rechercher, cacher2]);
+  }, [start, end, rechercher]);
   const fleche = () => {
     if (active1 === true) {
       setActive1(false);

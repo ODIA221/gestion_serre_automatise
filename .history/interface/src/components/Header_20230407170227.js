@@ -99,7 +99,7 @@ function Header() {
            
           });
 /*         } 
- */    }, [minute]);
+ */    }, [seconde]);
 
   setInterval(() => repeter(), 1000);
 

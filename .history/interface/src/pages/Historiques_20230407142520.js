@@ -6,12 +6,13 @@ import { useEffect } from 'react'
 
 function Historiques() {
   const [donnee, setData] = useState([])
-  const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(7);
+  const [users, setUsers] = useState(null);
+  const [start, setStart] = useState<number>(0);
+  const [end, setEnd] = useState<number>(7);
   const [active1, setActive1] = useState(true);
-  const [active2, setActive2] = useState(false);
-  const [rechercher, setRecherche] = useState("");
-  const [cacher2, setCacher2] = useState(true);
+  const [active2, setActive2] = useState<boolean>(false);
+  const [rechercher, setRecherche] = useState<String>("");
+  const [cacher2, setCacher2] = useState<boolean>(true);
 
 
   useEffect(() => {
@@ -25,61 +26,47 @@ function Historiques() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-/*         setData(res)
- */        setData(
-          res.filter((_a, index) => {
-            if (rechercher === "") {
+        setData(res)
+        setUsers(
+          res.filter((_a: any, index: number) => {
+            if (rechercher == "") {
               return index >= start && index < end;
             } else {
-              if (rechercher !== _a.date) {
+              if (rechercher != _a.date) {
                 console.log("rien");
 
               }
 
-            if (rechercher === _a.date) {
+            if (rechercher == _a.date) {
               console.log("trouver");
-              setCacher2(true); 
-              return _a.date === rechercher;
+              setCacher2(true); //mis à jour to be merged MHDLamine->DEV 
+              return _a.date == rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
-
-
-
-      });
-
-  }, [start, end, rechercher, cacher2]);
   const fleche = () => {
-    if (active1 === true) {
+    if (active1 == true) {
       setActive1(false);
       setActive2(true);
       setStart(7);
       setEnd(14);
     }
-    if (active2 === true) {
+    if (active2 == true) {
       setActive1(true);
       setActive2(false);
       setStart(0);
       setEnd(7);
     }
   };
-  const search = (chercher) => {
-    const valeur = chercher;
-    setRecherche(valeur);
-  };
+
+
+      });
+
+  }, []);
+
   return (
     <div class= "container">
-       <input
-              onChange={(e) => search(e.target.value)}
-              type="date"
-              name="date"
-              id="date"
-             /*  max={max}
-              min="2023-01-01" */
-            />
     <table class=" table border border-dark mt-4">
       <thead>
         <tr>
@@ -94,7 +81,7 @@ function Historiques() {
  
          {
           donnee.map(h => <tr>
-            <td><b>{h.jour}</b></td>
+            <td><b>Date du {h.jour}</b></td>
             <td>{h.temperature}°C</td>
             <td>{h.humsol}%</td>
             <td>{h.humserre}%</td>
@@ -154,7 +141,9 @@ function Historiques() {
                     <a
                       className={`pagenav ${cacher2 ? "cacher" : ""}`}
                       href="#"
-                      onClick={() => fleche()}
+                      onClick={() => {
+                        fleche();
+                      }}
                       aria-label="Next"
                     >
                       <span aria-hidden="true">&raquo;</span>

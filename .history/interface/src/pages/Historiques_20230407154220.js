@@ -25,8 +25,8 @@ function Historiques() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-/*         setData(res)
- */        setData(
+        setData(res)
+        setData(
           res.filter((_a, index) => {
             if (rechercher === "") {
               return index >= start && index < end;
@@ -38,20 +38,18 @@ function Historiques() {
 
             if (rechercher === _a.date) {
               console.log("trouver");
-              setCacher2(true); 
+              setCacher2(true); //mis à jour to be merged MHDLamine->DEV 
               return _a.date === rechercher;
             }
           }
-          return false;
-          }
-          )
+          })
         );
 
 
 
       });
 
-  }, [start, end, rechercher, cacher2]);
+  }, [start, end, rechercher]);
   const fleche = () => {
     if (active1 === true) {
       setActive1(false);

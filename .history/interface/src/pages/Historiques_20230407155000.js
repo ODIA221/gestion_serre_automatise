@@ -27,7 +27,7 @@ function Historiques() {
         console.log(res);
 /*         setData(res)
  */        setData(
-          res.filter((_a, index) => {
+          res.filter(function =(_a, index) {
             if (rechercher === "") {
               return index >= start && index < end;
             } else {
@@ -36,15 +36,13 @@ function Historiques() {
 
               }
 
-            if (rechercher === _a.date) {
-              console.log("trouver");
-              setCacher2(true); 
-              return _a.date === rechercher;
+              if (rechercher === _a.date) {
+                console.log("trouver");
+                setCacher2(true);
+                return _a.date === rechercher;
+              }
             }
-          }
-          return false;
-          }
-          )
+          })
         );
 
 
