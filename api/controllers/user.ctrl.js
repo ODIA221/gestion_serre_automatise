@@ -68,17 +68,11 @@ router.patch('/modifierMdp/:id', async(req, res) => {
 
 // Connexion
 router.post('/connexion', (req, res) => {
-
   res.header({
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "*",
   })
-
-  /* return res.send({response : ""}).status(200); */
-
-
-
   let getUser
   userSchema
     .findOne({
