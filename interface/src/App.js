@@ -1,5 +1,5 @@
 /* import Axios from "axios" */
-import React from "react";
+import React, { useEffect} from "react";
 import Dashboard from './pages/Dashboard';
 import LoginForm from './pages/Connexion';
 import { Route, Routes } from 'react-router-dom';
@@ -12,6 +12,12 @@ import ProtectionRoutes from "./pages/ProtectionRoutes";
 
 
 function App() {
+
+   
+
+
+
+
 
   return (
   <div className='pages'>
