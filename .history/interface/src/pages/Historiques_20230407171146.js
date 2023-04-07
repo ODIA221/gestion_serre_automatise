@@ -28,7 +28,7 @@ function Historiques() {
 /*         setData(res)
  */        setData(
           res.filter((_a, index) => {
-            if (rechercher === "") {
+            if (rechercher == "") {
               return index >= start && index < end;
             } else {
               if (rechercher != _a.date) {
@@ -36,10 +36,10 @@ function Historiques() {
 
               }
 
-            if (rechercher === _a.date) {
+            if (rechercher == _a.date) {
               console.log("trouver");
               setCacher2(true); 
-              return _a.date === rechercher;
+              return _a.date == rechercher;
             }
           }
           return false;
@@ -163,6 +163,7 @@ function Historiques() {
                 </ul>
               </nav>
   </div>
+
 </div>
   );
 }
