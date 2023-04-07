@@ -7,7 +7,7 @@ import Historiques from './pages/Historiques';
 import  TableauDB  from './pages/TableauDB';
 import  ProtectRoute  from './pages/ProtectRoute';
 import  ParametrePlante  from './pages/ParametrePlante';
-import Auth from "./pages/Auth";
+//import Auth from "./pages/Auth";
 
 
 function App() {
