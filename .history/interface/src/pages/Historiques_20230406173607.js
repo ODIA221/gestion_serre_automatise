@@ -16,12 +16,13 @@ function Historiques() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        console.log(Array(res));
         setData(res)
       });
   }, []);
 
  /*  const data =[
+
     
         {
           "jour": "lundi",
@@ -66,6 +67,7 @@ function Historiques() {
             "humserre": "45%",
             "luminosite": "40lux"
           }
+
     
 ]  */
 
@@ -81,7 +83,12 @@ function Historiques() {
         </tr>
       </thead>
       <tbody>
- 
+      <th>Jours/ Données</th>
+          <th>Température</th>
+          <th>Humidité sol</th>
+          <th>Humidité serre</th>
+          <th>Luminosité</th>
+          </tr>
          {
           donnee.map(h => <tr>
             <td><b>Date du {h.jour}</b></td>
@@ -97,3 +104,5 @@ function Historiques() {
 
 
 export default Historiques;
+
+

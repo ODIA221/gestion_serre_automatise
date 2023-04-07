@@ -86,7 +86,7 @@ function Header() {
   
   }
   useEffect(() => {
-      if (heure === "11" && minute === "38" && seconde === "0") {
+      if (heure === "11" && minute === "3" && seconde === "0") {
       fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
@@ -109,7 +109,7 @@ function Header() {
             //window.location.reload();
           });
         } 
-    }, [minute]);
+    }, [jour]);
 
   setInterval(() => repeter(), 1000);
 

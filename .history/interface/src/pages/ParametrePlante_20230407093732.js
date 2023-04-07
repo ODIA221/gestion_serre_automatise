@@ -5,7 +5,7 @@ const ParametrePlante = () => {
     <div class='historiquePlante2'>
        <div class='paraPlante'> 
         <div class='paraNom'><h2>{localStorage.getItem ("news")}
-</h2> <h2>{localStorage.getItem ("choix")}</h2>
+</h2> <h2></h2>
 </div>
        
         <div class='groupChampPara'>

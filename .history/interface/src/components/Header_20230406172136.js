@@ -86,8 +86,8 @@ function Header() {
   
   }
   useEffect(() => {
-      if (heure === "11" && minute === "38" && seconde === "0") {
-      fetch("http://localhost:5000/api/envoi", {
+/*      if (heure === "16" && minute === "24" && seconde === "00") {
+ */       fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -108,8 +108,8 @@ function Header() {
             //console.log(annee.length)
             //window.location.reload();
           });
-        } 
-    }, [minute]);
+     /*  } */
+    }, [heure]);
 
   setInterval(() => repeter(), 1000);
 
@@ -336,9 +336,9 @@ function Header() {
                   <label class="labe1">Nom du plante</label>
                  {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input"
                  >
-                    <option  onChange={(e) => setChoix(e.target.value)}>Salade</option>
-                    <option  onChange={(e) => setChoix(e.target.value)}>Tomate</option>
-                    <option value='autres' >Autres</option>
+                    <option>Salade</option>
+                    <option>Tomate</option>
+                    <option value='autres'>Autres</option>
                   </select>: 
                   <input type="text" placeholder='donnez une plante' required
                   onChange={(e) => setNews(e.target.value)}

@@ -17,8 +17,8 @@ function Historiques() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        setData(res)
-      });
+/*         setData(res)
+ */      });
   }, []);
 
  /*  const data =[

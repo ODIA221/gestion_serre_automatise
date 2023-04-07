@@ -1,26 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Style2.css";
-import { useEffect } from 'react'
 
-
-function Historiques() {
-  const [donnee, setData] = useState([])
+function Historiques(){
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/recu", {
-      method: "GET", headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
+    fetch("http://localhost:3000/parametre/", { method: "GET",headers: {
+      "Content-Type": "application/json",
+       Accept: "application/json",
+      "Access-Control-Allow-Origin": "*",
+    }, })
       .then((res) => res.json())
       .then((res) => {
         console.log(res);
-        setData(res)
-      });
-  }, []);
-
  /*  const data =[
     
         {
@@ -61,15 +52,16 @@ function Historiques() {
             "luminosite": "40lux"
           },
           {"jour": "dimanche",
-            "temperature": "°C",
+            "temperature": "21°C",
             "humsol": "40%",
             "humserre": "45%",
             "luminosite": "40lux"
           }
-    
-]  */
 
-  return (
+    
+] */
+
+  return(
     <table class="container table border border-dark mt-4">
       <thead>
         <tr>
@@ -81,15 +73,15 @@ function Historiques() {
         </tr>
       </thead>
       <tbody>
- 
-         {
-          donnee.map(h => <tr>
-            <td><b>Date du {h.jour}</b></td>
-            <td>{h.temperature}°C</td>
-            <td>{h.humsol}%</td>
-            <td>{h.humserre}%</td>
-            <td>{h.luminosite}lux</td>
-          </tr>)} 
+
+     {
+     data.map(h => <tr>
+      <td><b>{h.jour}</b></td>
+      <td>{h.temperature}</td>
+      <td>{h.humsol}</td>
+      <td>{h.humserre}</td>
+      <td>{h.luminosite}</td>
+     </tr>)}
       </tbody>
     </table>
   );
@@ -97,3 +89,5 @@ function Historiques() {
 
 
 export default Historiques;
+
+
