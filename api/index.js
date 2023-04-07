@@ -49,7 +49,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 2000
+const port = process.env.PORT || 5000
 
 const servers = require('http').createServer(app)
  servers.listen(port, () => {
@@ -85,7 +85,7 @@ io = require('socket.io')(servers,
   });
 
   const SerialPort = require('serialport');
-  const port2 = new SerialPort('/dev/ttyUSB2', { baudRate: 115200} )
+  const port2 = new SerialPort('/dev/ttyUSB0', { baudRate: 115200} )
   const { ReadlineParser } = require('@serialport/parser-readline');
   const parser = port2.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
