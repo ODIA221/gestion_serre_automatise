@@ -4,7 +4,7 @@ const ParametrePlante = () => {
   return (
     <div class='historiquePlante2'>
        <div class='paraPlante'> 
-        <div class='paraNom'> <h2>{localStorage.getItem ("choix")} : {localStorage.getItem ('news')}</h2> 
+        <div class='paraNom'> <h2>{localStorage.getItem ("choix")} : </h2> 
 </div>
        
         <div class='groupChampPara'>

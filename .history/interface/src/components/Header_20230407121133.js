@@ -336,10 +336,9 @@ function Header() {
                   <label class="labe1">Nom du plante</label>
                  {(!debit && !debitdif) ? <select onChange={(e) => autres(e)} id="swal-input1" class="swal2-input"
                  >
-                  <option>...</option>
                     <option  onChange={(e) => setChoix(e.target.value)}>Salade</option>
                     <option  onChange={(e) => setChoix(e.target.value)}>Tomate</option>
-                    <option value='autres' >Personalisé</option>
+                    <option value='autres' >Autres</option>
                   </select>: 
                   <input type="text" placeholder='donnez une plante' required
                   onChange={(e) => setNews(e.target.value)}
@@ -361,7 +360,7 @@ function Header() {
                   {!debit && !debitdif && !autre && <>
                     <label class="labe3">Heure d'arrosage</label>
                     <select id="swal-input1" class="swal2-input"
-                    onChange={(e) => setHeure1 (e.target.value)}
+                    onChange={(e) => setHeuredefaut (e.target.value)}
 
                     >
                       <option>...</option>
@@ -423,7 +422,6 @@ function Header() {
                         onChange={(e) => setDure (e.target.value)}
 
                       >
-                      <option>...</option>
                       <option>2</option>
                       <option>4</option>
                       <option>6</option>
@@ -432,8 +430,7 @@ function Header() {
                       <select id="swal-input1" class="swal2-input"
                           onChange={(e) => setHeure2 (e.target.value)}
 
-                      > 
-                      <option>...</option>
+                      >
                         <option>16</option>
                         <option>18</option>
                         <option>19</option>
