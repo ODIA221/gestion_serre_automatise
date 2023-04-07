@@ -6,6 +6,8 @@ import salade from '../images/salade.png'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form";
+/* import Auth from "../pages/Auth"; */
+
 
 function Header() {
   const navigate = useNavigate()
@@ -14,7 +16,7 @@ function Header() {
   const [debit, setDebit] = useState(false)
   const [debitdif, setDebitdif] = useState(false)
 
-      // Gfonction de  déconnexion
+      // fonction de  déconnexion
         let logout = () => {
           localStorage.removeItem('token')
           navigate('/')
@@ -101,7 +103,6 @@ function Header() {
       {/* //Menu de navigation */}
       <div id='menuNav' >
         <button id="btnMenuNav"><Link to="/Dashboard/TableauDB">Tableau de bord </Link> </button>
-        {/* <button id="btnMenuNav"> <Link to="/Dashboard/ChangePW">Changer de Mot de passe</Link></button> */}
         <button id="btnMenuNav" onClick={handleClickOpen}>Changer de Mot de passe</button> 
         <button id="btnMenuNav"> <Link onClick={() => popup()}>Paramètres Plantes</Link></button>
 
@@ -231,10 +232,8 @@ function Header() {
 
 
                   <div class="d-flex gap-2 justify-content-center mt-5">
-                    <button onClick={() => setOpen('')} class="butA">Annulé</button>
-{/*                     <button onClick={() => alert("Engistrement reussi!")} class="butM">Modifié</button>
- */}                    
-                    <button type="button" class="btn btn-success" className='butM' id="liveToastBtn">Modifié</button>
+                    <button onClick={() => setOpen('')} class="butA">Annuler</button>                    
+                    <button type="button" class="btn btn-success" className='butM' id="liveToastBtn">Modifier</button>
 
                           <div class="position-fixed bottom-0 end-0 p-3" style={{"z-index": 11}}/>
                             <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">

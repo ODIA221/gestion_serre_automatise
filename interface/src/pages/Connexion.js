@@ -1,17 +1,18 @@
-import React/* , { Component, useState }  */from "react";
+import React, { useState }from "react";
 import { useForm } from "react-hook-form";
 import "./Style2.css";
 import axios from "axios";
+import  io from 'socket.io-client';
+
 
 /* endPoint api */
-const ENDPOINT = "http://localhost:5000/api/connexion"
-/* 
-const baseURL = "http:localhost:2000/api/connexion"; */
+const ENDPOINT = "http://localhost:5000/api/connexion";
+
 
 const LoginForm = () => {
-
-
-  
+    /* const [isLoading, setIsLoading] =useState(true); */
+    const [error, setErrror] = useState(null);
+    const [login, setLogin] = useState(null);
 
     /*  hooks-form*/
     const {
@@ -22,53 +23,91 @@ const LoginForm = () => {
         {mode:"onChange"}
       );
 
-  
+  //FRID
+//  const  arduino = () => {
+//     console.log('socket service');
+
+//  return this.socket.fromEvent('rfid')
+//   }
+const socket = io('ws://localhost:5000');
+const [erreurRFID, setErreurRFID] =useState(null);
+
+socket.on('rfid', (data) => {
+    console.log(data);
+    if (data === 'Badge non autorisé'){
+
+        setErreurRFID(data)   
+    }else{
+
+       localStorage.setItem('token', data)
+       window.location.pathname = 'Dashboard/TableauDB';   
+   } 
+    
+})
+
+        
       
       /*  */
       const onSubmit = (data) => console.log("");
-
 /* pour se connecter */
 const connexion = () =>{
-    const data = {
-        email: document.getElementById("email").value, 
-        password: document.getElementById("password").value 
-    }
-    try{
-        axios
-        .post(ENDPOINT, data)
-        .then(function(response){
-            /* vérification token */
-            if(response?.data?.token){
-                /* stockage du token dans localStorage */
-                localStorage.setItem('token', response?.data?.token)
-                /* redirection si token est bon */
-                window.location.pathname = 'Dashboard/TableauDB';
-            }       
+    /* e.prevenDefault(); */
+        const data = {
+            email: document.getElementById("email").value, 
+            password: document.getElementById("password").value 
+        }
+        try{
+          
+            axios
+            .post(ENDPOINT, data)
+            .then((response)  =>{ 
+                /* vérification token */
+                if(response?.data?.token){
+                    /* stockage du token dans localStorage */
+                    localStorage.setItem('token', response?.data?.token)
+                    /* redirection si token est bon */
+                    window.location.pathname = 'Dashboard/TableauDB';
+                    
+                }
+            })
+            .then(data =>{
+                setLogin(data)
+               /*  setIsLoading(true) */
+                setErrror (null)
+                
+            })
+            .catch(error =>{
+                console.log(error)
+                setErrror (error.message)
+               /*  setIsLoading(false) */
+                // Erreur de la requête
+                if (error.response) {
+                // Le serveur a renvoyé une réponse avec un code d'erreur
+                setErrror(error.response.data.message);
+                }
         })
-        .catch(function(error){
-            console.log("Erreur  ==>", error)
-        })
-        .then(function(){
-            console.log("Coll")
-        });
-    }catch(err){
-        alert(err); //failed to match
-    }
-} 
-
+            }catch(err){
+            console.log(err.message); //failed to match
+            return err.json();           
+        }
+}
 /*  */
     return (
         <div className="body">
             {/* div rfid  connexion*/}
-            <div  className="corp">
-                {/* <h1 className="labelRfid" > RFID</h1> */}
-
-            </div>
+            <div  className="corp ">{erreurRFID}</div>
             {/* div form connexion*/}
                 <form className="corp1" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion</h1>
-
+                     {/* timeOute */}
+                    {/* <div id="setTime">
+                        {isLoading && <div> En chargement ....</div>}
+                    </div> */}
                     <div>
+                    {/* Affichage des message du server */}
+                    <div id="errServer">
+                        {error && <div>{error}</div>}
+                    </div>
                         <div className="label">
                             <label>
                                 Email
@@ -107,7 +146,6 @@ const connexion = () =>{
                                 placeholder="Mot de passe" 
                                 {...register("password", {
                                     required: "Champ Obligatoire",
-                                    
                                     minLength: {
                                     value: 5,
                                     message: "5 Caractètes au minimum"
@@ -123,17 +161,9 @@ const connexion = () =>{
                         </div>
                     
                     </div>
-
                     <button type="submit" className="login-btn" onClick={(e) =>connexion(e)}>Connexion</button>
-                
                 </form>
-
-        </div>      
-        
-
+        </div>    
     )
 };
-
-
-
 export default LoginForm

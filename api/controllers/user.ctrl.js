@@ -4,7 +4,16 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
 const authorize = require('../authentification/auth')
+const serverData = require('../index')
 mongoose = require('mongoose')
+mongoose.set('strictQuery', true);
+// const a = serverData.CodeRFID 
+//  console.log(a);
+
+
+
+
+ 
 
 // Inscription
 router.post('/ajouter',  (req, res, next) => {
@@ -69,7 +78,15 @@ router.patch('/modifierMdp/:id', async(req, res) => {
   }
 })
 
+
 // Connexion
+
+
+
+
+
+
+
 router.post('/connexion', (req, res) => {
 
   res.header({
@@ -91,8 +108,7 @@ router.post('/connexion', (req, res) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: 'Compte non existant !',
-          /* alert(message); */
+          message: 'Email inéxistant !',
         })
       }
       getUser = user
@@ -132,6 +148,12 @@ router.post('/connexion', (req, res) => {
       })
       
     })
+
+
+
+
+
+    
 })
 
 // Recuperez tous les utilisateurs
@@ -169,23 +191,6 @@ router.route('/profile/:id').get(authorize, (req, res, next) => {
   })
 })
 
-// Update User
-router.route('/modifier/:id').put((req, res, next) => {
-  userSchema.findByIdAndUpdate(
-    req.params.id,
-    {
-      $set: req.body,
-    },
-    (error, data) => {
-      if (error) {
-        return next(error)
-      } else {
-        res.json(data)
-        console.log('Modification réussie !')
-      }
-    },
-  )
-})
 
 
 module.exports = router

@@ -28,25 +28,25 @@ thead{
     text-align: center;
     justify-content: center;
    
-    
+    gap: 38px;
     
 }
 /* ÉTATS */
 
 .headerDash2{
-    width: 80%;
-    height: 10%;
+    width: 620px;
+    height: 50px;
     background-color: #3d6e6f;
-    font-size: 40px;
+    font-size: 35px;
     border-radius:  25px 25px 0px 0px;
     color: white;
 }
 .containerDash2{
-    width: 80%;
-    height:43%;
+    width: 620px;
+    height:253px;
     display: flex;
     justify-content: center;  
-    gap: 8%;
+    gap: 78px;
     padding: 2% 0 0 0;
    
     border-radius:  0px 0px 25px 25px;
@@ -59,24 +59,25 @@ thead{
   
 }
 .imageDash2{
-   
-    border-radius: 20px;
+    min-width: 100px;
+    min-height:25px;
+    border-radius: 5px;
     height: 54%;
 }
 
 /* Contrôle */
 
 .headerDash2C{
-    
-    height: 10%;
+    width: 620px;
+    height: 50px;
     background-color: #3d6e6f;
     font-size: 40px;
     border-radius:  25px 25px 0px 0px;
     color: white;
 }
 .containerDash2C{
-   
-    height:43%;
+    width: 620px;
+    height:253px;
     display: flex;
    
    
@@ -94,9 +95,10 @@ thead{
 }
 
 .imageDashC2{
-    width:70%;
+    min-width: 100px;
+    min-height:25px;
     margin-left: 15%;
-    border-radius: 20px;
+    border-radius: 10px;
     height: 200px;
 }
 
@@ -299,4 +301,23 @@ h1.label
   }
   .labelRfid{
     color: white;
+  }
+  #errServer{
+    background-color: rgb(250, 191, 191);
+    border: none;
+    width: 100%;
+    color: black;
+    border-radius: 7px;
+    text-align: center;
+  }
+  #setTime{
+    color: white;
+    align-items: center;
+    animation: alternate;
+  }
+  .corp{
+    font-size: 30px;
+  
+    color: red;
+
   }
