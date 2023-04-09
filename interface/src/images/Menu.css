@@ -1,0 +1,67 @@
+#entête{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+
+}
+/* menu navigation */
+#menuNav{
+  width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    }
+    
+ #btnMenuNav{
+
+      background-color: #004446;
+      font-size: 25px;
+      color: white;
+      padding: 1% 4% 1% 4% ;
+      border: none;
+    }
+
+    #btnMenuNav:hover{
+      background-color: #3d6e6f;
+      
+    }
+   
+    /* description  */
+ #infoNav{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 4%;
+  text-transform: uppercase;
+ }
+  #textHeader{
+    margin-top: 1%;
+    font-size: 25px;
+   
+
+  }
+  #imageHeader{
+    height: 40%;
+    border-radius: 10px;
+  }
+ /* image header et valeurs temps réelles */
+ #VTR{
+  margin-top: -7.5%;
+  width: 100%;
+ }
+  #ImageVTR{
+    width: 100%;
+    height: 20%;
+    margin-top: 0%;
+    position: absolute;
+}
+#ImageSaladeVTR{
+  width: 65%;
+  height: 180px;
+    margin-top: 2%;
+    margin-left: 16%;
+ 
+   
+position: relative;
+}
