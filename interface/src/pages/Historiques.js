@@ -5,7 +5,7 @@ import "./Style2.css";
 function Historiques() {
   const [donnee, setData] = useState([]);
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(150);
+  const [end, setEnd] = useState(7);
   const [active1, setActive1] = useState(true);
   const [active2, setActive2] = useState(false);
   const [rechercher, setRecherche] = useState("");
@@ -53,7 +53,7 @@ function Historiques() {
   }; */
 
   const handlePagination = (page) => {
-    const pageSize = 5; // nombre d'éléments par page
+    const pageSize = 7; // nombre d'éléments par page
     const startIndex = (page - 1) * pageSize;
     const endIndex = Math.min(startIndex + pageSize, items.length);
     // si la fin de la page dépasse la fin du tableau, ajuster la fin
@@ -111,7 +111,7 @@ function Historiques() {
       <table className="table border border-dark mt-4">
         <thead>
           <tr>
-            <th>Date</th>
+            <th>Date Ajout</th>
             <th>Température</th>
             <th>Humidité sol</th>
             <th>Humidité serre</th>
