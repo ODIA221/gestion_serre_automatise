@@ -40,16 +40,6 @@ function Header() {
 
  
 
-
-
-
-
-
-
-  
-
-
-
       // fonction de  déconnexion
         let logout = () => {
           localStorage.removeItem('token')
@@ -85,9 +75,10 @@ function Header() {
     
   
   }
+  
   useEffect(() => {
-      if (heure === "12" && minute === "03" && seconde === "0") {
-      fetch("http://localhost:5000/api/envoi", {
+/*       if (heure === "16" && minute === "49" && seconde === "00") {
+ */      fetch("http://localhost:5000/api/envoi", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,18 +96,18 @@ function Header() {
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            //console.log(annee.length)
-            //window.location.reload();
+           
           });
-        } 
-    }, [heure, hum, humsol, lum, minute, periode, seconde, temp]);
+/*         } 
+ */    }, [minute]);
 
   setInterval(() => repeter(), 1000);
 
   const repeter = () => {
 
 
-    let currentDate = new Date().getFullYear()+ '-0' +(parseInt(String(new Date().getMonth())) +1) + '- 0'+new Date().getDate() 
+    let currentDate = new Date().getDate() 
+   + '/0' +(parseInt(String(new Date().getMonth())) +1) + '/0'+ new Date().getFullYear()
 
 
     let date = new Date();
