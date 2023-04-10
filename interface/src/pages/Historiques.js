@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./Style2.css";
 import { useEffect } from 'react'
@@ -24,9 +23,7 @@ function Historiques() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
-/*         setData(res)
- */        setData(
+        console.log(res);        setData(
           res.filter((_a, index) => {
             if (rechercher === "") {
               return index >= start && index < end;
@@ -77,8 +74,6 @@ function Historiques() {
               type="date"
               name="date"
               id="date"
-             /*  max={max}
-              min="2023-01-01" */
             />
     <table class=" table border border-dark mt-4">
       <thead>
