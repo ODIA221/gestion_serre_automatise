@@ -124,7 +124,12 @@ io = require('socket.io')(servers,
      
   });
 
-
+ /*  io.on("arrosage", (data) => {
+    console.log(data);
+    port.write(data)
+  }); */
+ 
+   
 
   
 

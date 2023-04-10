@@ -31,7 +31,7 @@ function Historiques() {
             if (rechercher === "") {
               return index >= start && index < end;
             } else {
-              if (rechercher !== _a.date) {
+              if (rechercher !+= _a.date) {
                 console.log("rien");
 
               }

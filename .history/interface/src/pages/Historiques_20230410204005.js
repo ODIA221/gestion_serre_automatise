@@ -15,7 +15,7 @@ function Historiques() {
 
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/recu", {
+    fetch("http://localhost:500/api/recu", {
       method: "GET", headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
