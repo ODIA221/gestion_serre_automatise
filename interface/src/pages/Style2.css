@@ -2,6 +2,7 @@ table{
     border-radius: 10px;
     width: auto;
     font-size: 15px;
+    font-size: 25px;
 }
 thead{
     color: white;
@@ -93,18 +94,9 @@ thead{
 .btnDash button{
     margin: 2%;
 }
-
-.imageDashC2{
-    width:70%;
-    margin-left: 15%;
-    border-radius: 20px;
-    height: 200px;
+#container{
+    margin: 5%;
 }
-
-
-
-
-
 /* Style page Connextion */
 * {
     margin: 0;

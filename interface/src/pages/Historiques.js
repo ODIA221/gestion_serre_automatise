@@ -86,15 +86,15 @@ function Historiques() {
         </tr>
       </thead>
       <tbody>
- 
-         {
-          donnee.map(h => <tr>
-            <td><b>{h.jour}</b></td>
-            <td>{h.temperature}°C</td>
-            <td>{h.humsol}%</td>
-            <td>{h.humserre}%</td>
-            <td>{h.luminosite}lux</td>
-          </tr>)} 
+
+     {
+     donnee.map(h => <tr>
+      <td><b>{h.jour}</b></td>
+      <td>{h.temperature}</td>
+      <td>{h.humsol}</td>
+      <td>{h.humserre}</td>
+      <td>{h.luminosite}</td>
+     </tr>)}
       </tbody>
     </table>
     <div className="box-pagination">
