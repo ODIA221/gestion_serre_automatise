@@ -174,7 +174,7 @@ router.post('/connexion', (req, res) => {
 
 //historique
 
-router.route('/recu').get((req, res, next) => {
+router.route('/recup').get((req, res, next) => {
   historiqueSchema.find((error, response)=> {
     if (error) {
       return next(error)
@@ -183,6 +183,19 @@ router.route('/recu').get((req, res, next) => {
     }
   })
 })
+
+/*  */
+
+router.route('/recu').get((req, res, next) => {
+  historiqueSchema.find()
+    .then(response => {
+      return res.status(200).json(response);
+    })
+    .catch(error => {
+      return next(error);
+    });
+});
+
 
 
 // Recuperez tous les utilisateurs

@@ -294,6 +294,12 @@ h1.label
 .cacher2, .cacher3, .cacher4{
     display: none;
 }
+.historique{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10000px;
+}
 
 
 @media only screen and (max-width: 1400px) {
