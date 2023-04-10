@@ -85,7 +85,8 @@ io = require('socket.io')(servers,
   });
 
   const SerialPort = require('serialport');
-  const port2 = new SerialPort('/dev/ttyACM0', { baudRate: 9600} )
+      updatedData.nouveauMdp = hash;
+      const port2 = new SerialPort('/dev/ttyUSB0', { baudRate: 9600} )
   const { ReadlineParser } = require('@serialport/parser-readline');
   const parser = port2.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
