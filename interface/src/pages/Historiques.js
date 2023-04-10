@@ -62,23 +62,22 @@ function Historiques() {
       // il y a des éléments restants
       console.log(`Affichage de ${pageSize} éléments de la page ${page}`);
       for (let i = startIndex; i < endIndex; i++) {
-        setActive1(true);
-        setActive2(false);
         console.log(items[i]);
-        
       }
       console.log(`Il reste ${remaining} éléments`);
+      setActive1(true);
+      setActive2(false);
     } else {
       // pas d'éléments restants
       console.log(`Affichage de ${pageSize} éléments de la page ${page}`);
       for (let i = startIndex; i < endIndex; i++) {
         console.log(items[i]);
-        setActive1(false);
-        setActive2(true);
       }
+      setActive1(false);
+      setActive2(true);
     }
   };
-
+  
   
 
   const dataFiltree = donnee.filter((item) => {
