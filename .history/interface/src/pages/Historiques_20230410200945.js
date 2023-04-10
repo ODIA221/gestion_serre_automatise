@@ -83,7 +83,7 @@ function Historiques() {
     <table class=" table border border-dark mt-4">
       <thead>
         <tr>
-          <th>Date</th>
+          <th>dat</th>
           <th>Température</th>
           <th>Humidité sol</th>
           <th>Humidité serre</th>

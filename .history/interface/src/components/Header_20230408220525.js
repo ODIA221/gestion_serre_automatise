@@ -99,7 +99,7 @@ function Header() {
            
           });
 /*         } 
- */    }, []);
+ */    }, [jour]);
 
   setInterval(() => repeter(), 1000);
 
