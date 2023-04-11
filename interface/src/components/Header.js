@@ -286,7 +286,7 @@ function Header() {
           <option value='/Dashboard/ParametrePlante' >Historique des plantes</option>
           <option value='/Dashboard/Historique'>Historique de la serre</option>
         </select>
-        <button  id="btnMenuNav"><span className="material-symbols-outlined" onClick={logout}>logout</span> </button>
+        <button id="btnMenuNav"><span className="material-symbols-outlined"  onClick={logout}>logout</span> </button>
       </div>
       {/* //logo, description et photo serre */}
       <div id='infoNav' >

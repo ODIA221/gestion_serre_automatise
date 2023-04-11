@@ -11,8 +11,8 @@ const ENDPOINT = "http://localhost:5000/api/connexion";
 
 const LoginForm = () => {
     /* const [isLoading, setIsLoading] =useState(true); */
-    const [error, setErrror] =useState(null);
-    /* const [login, setLogin] =useState(null); */
+    const [error, setErrror] = useState(null);
+    const [login, setLogin] = useState(null);
 
     /*  hooks-form*/
     const {
@@ -30,13 +30,21 @@ const LoginForm = () => {
 //  return this.socket.fromEvent('rfid')
 //   }
 const socket = io('ws://localhost:5000');
+const [erreurRFID, setErreurRFID] =useState(null);
+
 socket.on('rfid', (data) => {
     console.log(data);
-   
-        localStorage.setItem('token', data)
-        window.location.pathname = 'Dashboard/TableauDB';   
+    if (data === 'Badge non autorisé'){
+
+        setErreurRFID(data)   
+    }else{
+
+       localStorage.setItem('token', data)
+       window.location.pathname = 'Dashboard/TableauDB';   
+   } 
     
 })
+
         
       
       /*  */
@@ -59,7 +67,7 @@ const connexion = () =>{
                     localStorage.setItem('token', response?.data?.token)
                     localStorage.setItem('id', response?.data?._id)
                     /* redirection si token est bon */
-                    window.location.pathname = '/Dashboard/TableauDB';
+                    window.location.pathname = 'Dashboard/TableauDB';
                     
                 }
             })
@@ -88,8 +96,7 @@ const connexion = () =>{
     return (
         <div className="body">
             {/* div rfid  connexion*/}
-            <div  className="corp">
-                {/* <h1 className="labelRfid" > RFID</h1> */}      </div>
+            <div  className="corp ">{erreurRFID}</div>
             {/* div form connexion*/}
                 <form className="corp1" onSubmit={handleSubmit(onSubmit)}>
                     <h1 className="label" >Connexion</h1>
