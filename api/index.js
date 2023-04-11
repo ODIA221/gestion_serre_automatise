@@ -49,7 +49,7 @@ app.use('/api', api)
 app.get('/favicon.ico', (req, res) => res.status(204))
 
 // Define PORT
-const port = process.env.PORT || 2000
+const port = process.env.PORT || 5000
 
 const servers = require('http').createServer(app)
  servers.listen(port, () => {
@@ -84,11 +84,24 @@ io = require('socket.io')(servers,
       }
   });
 
+  
+
+
   const SerialPort = require('serialport');
-  const port2 = new SerialPort('/dev/ttyUSB2', { baudRate: 115200} )
+  const port2 = new SerialPort('/dev/ttyUSB1', { baudRate: 115200} )
   const { ReadlineParser } = require('@serialport/parser-readline');
   const parser = port2.pipe(new ReadlineParser({ delimiter: '\r\n' }))
 
+
+  io.on('connection', (socket) => {
+    console.log('Client connecté');
+  
+    // Écouter l'événement 'message'
+    socket.on('message', (data) => {
+      console.log(`Données reçues : ${JSON.stringify(data)}`);
+      port2.write(data.message);
+    });
+  });
 
 
   parser.on("data", (data) => {
@@ -97,8 +110,10 @@ io = require('socket.io')(servers,
     let etatPorte = tempon[0]
     let etatInsecte = tempon[1]
     let codeRfid = tempon[2]
+    let etatFenetre = tempon[3]
+    let etatPompe
      //console.log(data.CodeRFID);
-     console.log(tempon[0], '  ',tempon[1], ' ',tempon[2] );
+     console.log(tempon[0], '  ',tempon[1], ' ',tempon[2], ' ',tempon[3] );
      if(codeRfid === '1130050397'){
       let jwtToken = jwt.sign(
         {
@@ -118,7 +133,7 @@ io = require('socket.io')(servers,
      }
      //console.log(CodeRFID);
 
-// présence insecte
+///////////////////// présence insecte ///////////
      if(etatInsecte == 'presence_insecte'){
       
       io.emit('insecte', 'Present');
@@ -126,7 +141,7 @@ io = require('socket.io')(servers,
    
       io.emit('insecte', 'Absent');
      }
-  // porte
+  ///////////////////////////// porte ////////////////
       if(etatPorte == 'ouverte'){
   
       io.emit('porte', 'ouverte')
@@ -134,8 +149,32 @@ io = require('socket.io')(servers,
       
       io.emit('porte', 'fermee')
      }
+  ///////////////////////////// Fenêtre ////////////////
+  if(etatFenetre == 'ouverte'){
+  
+    io.emit('fenetre', 'ouverte')
+   }else if(etatFenetre == 'fermee'){
+    
+    io.emit('fenetre', 'fermee')
+   }
+
+///////////////////////////// Arrosage ////////////////
+if(etatPompe == 'ouverte'){
+  
+  io.emit('Pompe', 'ouverte')
+ }else if(etatPompe == 'fermee'){
+  
+  io.emit('Pompe', 'fermee')
+ }
   });
-   
+  
+
+  
+
+
+
+    
+
    
 
     

@@ -35,7 +35,7 @@ thead{
 /* ÉTATS */
 
 .headerDash2{
-    width: 620px;
+    width: 600px;
     height: 50px;
     background-color: #3d6e6f;
     font-size: 35px;
@@ -43,14 +43,14 @@ thead{
     color: white;
 }
 .containerDash2{
-    width: 620px;
+    width: 600px;
     height:253px;
     display: flex;
     justify-content: center;  
     gap: 78px;
     padding: 2% 0 0 0;
-   
-    border-radius:  0px 0px 25px 25px;
+    box-shadow: 5px 8px 20px 0px #abc4c4;
+    border-radius:  0px 0px 20px 20px;
     background-color: #f5f8f8;
 }
 .elementDash2{
@@ -69,7 +69,7 @@ thead{
 /* Contrôle */
 
 .headerDash2C{
-    width: 620px;
+    width: 500px;
     height: 50px;
     background-color: #3d6e6f;
     font-size: 40px;
@@ -77,15 +77,16 @@ thead{
     color: white;
 }
 .containerDash2C{
-    width: 620px;
-    height:253px;
+    width: 500px;
+    height:255px;
     display: flex;
    
    
-    gap: 8%;
-    padding: 1% 0 0 5%;
-    border-radius:  0px 0px 25px 25px;
+    gap: 13%;
+    padding: 1% 0 0 6%;
+    border-radius:  0px 0px 20px 20px;
     background-color: #f5f8f8;
+    box-shadow: 5px 8px 20px 0px #abc4c4;
 }
 .btnDash{
     display: flex;
